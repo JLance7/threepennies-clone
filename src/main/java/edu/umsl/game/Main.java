@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------
-Team Name: The Unhandles Exceptions
+Team Name: The Unhandled Exceptions
 Team Leader: Johnson, Avery
 Team Members:
     -Akinjiyan, Divine
@@ -35,6 +35,6 @@ public class Main
     public static void main(String[] args)
     {
         //create instance of GameFrame with default constructor
-        GameFrame gameFrame = new GameFrame();
+        new GameFrame();
     }
 }

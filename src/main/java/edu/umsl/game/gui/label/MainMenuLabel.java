@@ -47,7 +47,7 @@ public class MainMenuLabel extends JLabel
         //set bounds for the buttons, also giving their location on the main menu label
         btnStandard.setBounds(50, 300, 400, 100);
         btnManual.setBounds(50, 425, 400, 100);
-        btnExample.setBounds(830, 425, 400, 100);
+        btnExample.setBounds(815, 425, 400, 100);
         //add buttons to the main menu label
         this.add(btnStandard);
         this.add(btnManual);
