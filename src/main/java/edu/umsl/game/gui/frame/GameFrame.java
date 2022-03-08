@@ -1,13 +1,9 @@
 package edu.umsl.game.gui.frame;
 
 //import MainMenuPanel access and swing wildcard for GUI development
-import edu.umsl.game.Main;
+import javax.swing.*;
 import edu.umsl.game.gui.label.ExampleLabel;
 import edu.umsl.game.gui.label.MainMenuLabel;
-
-import javax.imageio.stream.ImageInputStream;
-import javax.swing.*;
-import java.awt.*;
 
 //extend JFrame for use of java super class
 public  class GameFrame extends JFrame

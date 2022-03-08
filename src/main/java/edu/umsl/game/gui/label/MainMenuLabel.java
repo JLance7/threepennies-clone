@@ -54,6 +54,15 @@ public class MainMenuLabel extends JLabel
         this.add(btnExample);
     }
     //getters for all buttons to be used in GameFrame
+
+    public JButton getBtnStandard()
+    {
+        return btnStandard;
+    }
+    public JButton getBtnManual()
+    {
+        return btnManual;
+    }
     public JButton getBtnExample()
     {
         return btnExample;
