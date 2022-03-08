@@ -34,7 +34,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        //Create instance of GameFrame with default constructor for standard setup
+        //Run default constructor of GameFrame
         GameFrame gameFrame = new GameFrame();
     }
 }

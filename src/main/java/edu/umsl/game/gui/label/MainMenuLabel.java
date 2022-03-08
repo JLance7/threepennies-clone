@@ -1,23 +1,25 @@
 package edu.umsl.game.gui.label;
 
-//import swing wildcard for GUI development
+//import swing and awt wildcard for GUI development
 import javax.swing.*;
 import java.awt.*;
 
 //extend JPanel for use of java super class
 public class MainMenuLabel extends JLabel
 {
+    //declare buttons outside of constructor for use in GameFrame
+    private final JButton btnStandard = new JButton();
+    private final JButton btnManual = new JButton();
+    private final JButton btnExample = new JButton();
+
     //use default constructor to create instance of the main menu with standard settings
     public MainMenuLabel()
     {
+        //set up background image of MainMenuLabel
         ImageIcon image = new ImageIcon("assets/images/MainMenuDraft.png");
         this.setIcon(image);
         this.setBounds(0, 0, 1280, 720);
 
-        //declare buttons for main menu
-        JButton btnStandard = new JButton();
-        JButton btnManual = new JButton();
-        JButton btnExample = new JButton();
         //Set text value of buttons
         btnStandard.setText("STANDARD PLAY");
         btnManual.setText("MANUAL PLAY");
@@ -46,13 +48,14 @@ public class MainMenuLabel extends JLabel
         btnStandard.setBounds(50, 300, 400, 100);
         btnManual.setBounds(50, 425, 400, 100);
         btnExample.setBounds(830, 425, 400, 100);
-        //use lambda expressions to add action listeners to buttons so they can respond to action
-        btnStandard.addActionListener(e -> System.out.println("testStandard"));
-        btnManual.addActionListener(e -> System.out.println("testManual"));
-        btnExample.addActionListener(e -> System.out.println("testExample"));
         //add buttons to the main menu label
         this.add(btnStandard);
         this.add(btnManual);
         this.add(btnExample);
+    }
+    //getters for all buttons to be used in GameFrame
+    public JButton getBtnExample()
+    {
+        return btnExample;
     }
 }
