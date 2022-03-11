@@ -4,6 +4,7 @@ package edu.umsl.game.gui.frame;
 import javax.swing.*;
 import edu.umsl.game.gui.label.ExampleLabel;
 import edu.umsl.game.gui.label.MainMenuLabel;
+import edu.umsl.game.gui.label.RulesLabel;
 
 //extend JFrame for use of java super class
 public  class GameFrame extends JFrame
@@ -26,15 +27,24 @@ public  class GameFrame extends JFrame
         this.add(mainMenuLabel);
         ExampleLabel exampleLabel = new ExampleLabel();
         this.add(exampleLabel);
+        RulesLabel rulesLabel = new RulesLabel();
+        this.add(rulesLabel);
         //set visibility of all labels other than mainMenuLabel to false until needed
         exampleLabel.setVisible(false);
+        rulesLabel.setVisible(false);
 
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
 
-        //add lambdas to every button in GUI for transfer between labels
+        /*
+        The following block of code consists of actions being fed to action listeners for every button
+        on the frame. The first parameter in the lambda expression is the page that it is coming from,
+        the second parameter is the page that it is going to.
+        */
         mainMenuLabel.getBtnExample().addActionListener(e -> menuToExample(mainMenuLabel, exampleLabel));
         exampleLabel.getBtnMenu().addActionListener(e -> exampleToMenu(exampleLabel, mainMenuLabel));
+        mainMenuLabel.getBtnRules().addActionListener(e -> menuToRules(mainMenuLabel, rulesLabel));
+        rulesLabel.getBtnMenu().addActionListener(e -> rulesToMenu(rulesLabel, mainMenuLabel));
     }
     //function to transfer visibility from the main menu to the example label
     public void menuToExample(MainMenuLabel menu, ExampleLabel example)
@@ -42,10 +52,22 @@ public  class GameFrame extends JFrame
         menu.setVisible(false);
         example.setVisible(true);
     }
-    //function to transfer visibility from the main menu to the example label
+    //function to transfer visibility from the example label to the main menu
     public void exampleToMenu(ExampleLabel example, MainMenuLabel menu)
     {
         example.setVisible(false);
+        menu.setVisible(true);
+    }
+    //function to transfer visibility from the main menu to the rules label
+    public void menuToRules(MainMenuLabel menu, RulesLabel rules)
+    {
+        menu.setVisible(false);
+        rules.setVisible(true);
+    }
+    //function to transfer visibility from the rules label to the main menu
+    public void rulesToMenu(RulesLabel rules, MainMenuLabel menu)
+    {
+        rules.setVisible(false);
         menu.setVisible(true);
     }
 
