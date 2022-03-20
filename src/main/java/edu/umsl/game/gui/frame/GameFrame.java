@@ -41,34 +41,15 @@ public  class GameFrame extends JFrame
         on the frame. The first parameter in the lambda expression is the page that it is coming from,
         the second parameter is the page that it is going to.
         */
-        mainMenuLabel.getBtnExample().addActionListener(e -> menuToExample(mainMenuLabel, exampleLabel));
-        exampleLabel.getBtnMenu().addActionListener(e -> exampleToMenu(exampleLabel, mainMenuLabel));
-        mainMenuLabel.getBtnRules().addActionListener(e -> menuToRules(mainMenuLabel, rulesLabel));
-        rulesLabel.getBtnMenu().addActionListener(e -> rulesToMenu(rulesLabel, mainMenuLabel));
+        mainMenuLabel.getBtnExample().addActionListener(e -> changeLabel(mainMenuLabel, exampleLabel));
+        exampleLabel.getBtnMenu().addActionListener(e -> changeLabel(exampleLabel, mainMenuLabel));
+        mainMenuLabel.getBtnRules().addActionListener(e -> changeLabel(mainMenuLabel, rulesLabel));
+        rulesLabel.getBtnMenu().addActionListener(e -> changeLabel(rulesLabel, mainMenuLabel));
     }
-    //function to transfer visibility from the main menu to the example label
-    public void menuToExample(MainMenuLabel menu, ExampleLabel example)
+    //function to transfer visibility from one label to another
+    public void changeLabel(JLabel start, JLabel end)
     {
-        menu.setVisible(false);
-        example.setVisible(true);
+        start.setVisible(false);
+        end.setVisible(true);
     }
-    //function to transfer visibility from the example label to the main menu
-    public void exampleToMenu(ExampleLabel example, MainMenuLabel menu)
-    {
-        example.setVisible(false);
-        menu.setVisible(true);
-    }
-    //function to transfer visibility from the main menu to the rules label
-    public void menuToRules(MainMenuLabel menu, RulesLabel rules)
-    {
-        menu.setVisible(false);
-        rules.setVisible(true);
-    }
-    //function to transfer visibility from the rules label to the main menu
-    public void rulesToMenu(RulesLabel rules, MainMenuLabel menu)
-    {
-        rules.setVisible(false);
-        menu.setVisible(true);
-    }
-
 }
