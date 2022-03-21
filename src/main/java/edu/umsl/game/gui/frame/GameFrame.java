@@ -5,6 +5,7 @@ import javax.swing.*;
 import edu.umsl.game.gui.label.ExampleLabel;
 import edu.umsl.game.gui.label.MainMenuLabel;
 import edu.umsl.game.gui.label.RulesLabel;
+import edu.umsl.game.gui.label.SequenceLabel;
 
 //extend JFrame for use of java super class
 public  class GameFrame extends JFrame
@@ -29,9 +30,16 @@ public  class GameFrame extends JFrame
         this.add(exampleLabel);
         RulesLabel rulesLabel = new RulesLabel();
         this.add(rulesLabel);
+        SequenceLabel standardSequenceLabel = new SequenceLabel();
+        this.add(standardSequenceLabel);
+        SequenceLabel manualSequenceLabel = new SequenceLabel();
+        this.add(manualSequenceLabel);
+
         //set visibility of all labels other than mainMenuLabel to false until needed
         exampleLabel.setVisible(false);
         rulesLabel.setVisible(false);
+        standardSequenceLabel.setVisible(false);
+        manualSequenceLabel.setVisible(false);
 
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
@@ -42,6 +50,8 @@ public  class GameFrame extends JFrame
         the second parameter is the page that it is going to.
         */
         mainMenuLabel.getBtnExample().addActionListener(e -> changeLabel(mainMenuLabel, exampleLabel));
+        mainMenuLabel.getBtnStandard().addActionListener(e -> changeLabel(mainMenuLabel, standardSequenceLabel));
+        mainMenuLabel.getBtnManual().addActionListener(e -> changeLabel(mainMenuLabel, manualSequenceLabel));
         exampleLabel.getBtnMenu().addActionListener(e -> changeLabel(exampleLabel, mainMenuLabel));
         mainMenuLabel.getBtnRules().addActionListener(e -> changeLabel(mainMenuLabel, rulesLabel));
         rulesLabel.getBtnMenu().addActionListener(e -> changeLabel(rulesLabel, mainMenuLabel));
