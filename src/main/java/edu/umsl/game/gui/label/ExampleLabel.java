@@ -34,6 +34,8 @@ public class ExampleLabel extends JLabel
         btnMenu.setBounds(880, 475, 300, 100);
         //add button to the example label
         this.add(btnMenu);
+
+        //
     }
     //getter for button to be used in GameFrame
     public JButton getBtnMenu()
