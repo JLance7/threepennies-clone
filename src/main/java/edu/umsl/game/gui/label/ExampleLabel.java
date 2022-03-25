@@ -14,7 +14,13 @@ public class ExampleLabel extends JLabel
     public ExampleLabel()
     {
         //set up background image of ExampleLabel
-        ImageIcon image = new ImageIcon("assets/images/exampleDraft.png");
+        ImageIcon image = null;
+        try{
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/exampleDraft.png"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         this.setIcon(image);
         this.setBounds(0, 0, 1280, 720);
 

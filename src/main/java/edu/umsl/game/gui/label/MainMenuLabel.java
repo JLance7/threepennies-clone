@@ -17,7 +17,13 @@ public class MainMenuLabel extends JLabel
     public MainMenuLabel()
     {
         //set up background image of MainMenuLabel
-        ImageIcon image = new ImageIcon("assets/images/MainMenuDraft.png");
+        ImageIcon image = null;
+        try{
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuDraft.png"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         this.setIcon(image);
         this.setBounds(0, 0, 1280, 720);
 
