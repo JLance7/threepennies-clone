@@ -13,7 +13,7 @@ public class RulesLabel extends JLabel
     public RulesLabel()
     {
         //set up background image of RulesLabel
-        ImageIcon image = new ImageIcon("assets/images/rulesDraft.png");
+        ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("images/rulesDraft.png"));
         this.setIcon(image);
         this.setBounds(0, 0, 1280, 720);
 
@@ -34,9 +34,10 @@ public class RulesLabel extends JLabel
         //add button to the rules label
         this.add(btnMenu);
     }
-    //getter for button to be used in GameFrame
-    public JButton getBtnMenu()
-    {
+
+    public JButton getBtnMenu() {
         return btnMenu;
     }
+    //getter for button to be used in GameFrame
+
 }

@@ -13,6 +13,7 @@ public class SequenceLabel extends JLabel
     private final JLabel lblSequence2 = new JLabel();
     private final JLabel lblSequence3 = new JLabel();
 
+
     //use default constructor to create instance of the example screen with standard settings
     public SequenceLabel()
     {
@@ -22,7 +23,13 @@ public class SequenceLabel extends JLabel
         JButton btnFlip3 = new JButton();
 
         //set up background image of ExampleLabel
-        ImageIcon image = new ImageIcon("assets/images/enterSequenceDraft.png");
+        ImageIcon image = null;
+        try{
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/enterSequenceDraft.png"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         this.setIcon(image);
         this.setBounds(0, 0, 1280, 720);
 
@@ -31,6 +38,7 @@ public class SequenceLabel extends JLabel
         btnFlip1.setText("FLIP");
         btnFlip2.setText("FLIP");
         btnFlip3.setText("FLIP");
+
         lblSequence1.setText("H");
         lblSequence2.setText("H");
         lblSequence3.setText("H");
@@ -39,6 +47,7 @@ public class SequenceLabel extends JLabel
         btnFlip1.setFont(new Font("Minerva", Font.PLAIN, 30));
         btnFlip2.setFont(new Font("Minerva", Font.PLAIN, 30));
         btnFlip3.setFont(new Font("Minerva", Font.PLAIN, 30));
+
         lblSequence1.setFont(new Font("Minerva", Font.PLAIN, 150));
         lblSequence2.setFont(new Font("Minerva", Font.PLAIN, 150));
         lblSequence3.setFont(new Font("Minerva", Font.PLAIN, 150));
@@ -47,6 +56,7 @@ public class SequenceLabel extends JLabel
         btnFlip1.setForeground(Color.BLACK);
         btnFlip2.setForeground(Color.BLACK);
         btnFlip3.setForeground(Color.BLACK);
+
         lblSequence1.setForeground(Color.BLACK);
         lblSequence2.setForeground(Color.BLACK);
         lblSequence3.setForeground(Color.BLACK);
@@ -55,21 +65,25 @@ public class SequenceLabel extends JLabel
         btnFlip1.setBorder(BorderFactory.createRaisedBevelBorder());
         btnFlip2.setBorder(BorderFactory.createRaisedBevelBorder());
         btnFlip3.setBorder(BorderFactory.createRaisedBevelBorder());
+
         //set background color of buttons
         btnSubmit.setBackground(new Color(230, 0, 0));
         btnFlip1.setBackground(new Color(230, 100, 100));
         btnFlip2.setBackground(new Color(230, 100, 100));
         btnFlip3.setBackground(new Color(230, 100, 100));
+
         //remove possible focus from buttons to remove selection box around buttons
         btnSubmit.setFocusable(false);
         btnFlip1.setFocusable(false);
         btnFlip2.setFocusable(false);
         btnFlip3.setFocusable(false);
+
         //set bounds for the buttons and labels, also giving its location on the sequence label
         btnSubmit.setBounds(540, 570, 200, 60);
         btnFlip1.setBounds(433, 440, 90, 40);
         btnFlip2.setBounds(593, 440, 90, 40);
         btnFlip3.setBounds(753, 440, 90, 40);
+
         lblSequence1.setBounds(443, 270, 200, 120);
         lblSequence2.setBounds(603, 270, 200, 120);
         lblSequence3.setBounds(763, 270, 200, 120);
@@ -81,6 +95,7 @@ public class SequenceLabel extends JLabel
         this.add(lblSequence1);
         this.add(lblSequence2);
         this.add(lblSequence3);
+
 
         //add listeners to flip buttons in order to change sequence
         btnFlip1.addActionListener(e -> flipLabel(lblSequence1));
@@ -103,5 +118,11 @@ public class SequenceLabel extends JLabel
         {
             label.setText("H");
         }
+    }
+
+
+    public String getSequence(){
+        String sequence = lblSequence1.getText() + lblSequence2.getText() + lblSequence3.getText();
+        return sequence;
     }
 }
