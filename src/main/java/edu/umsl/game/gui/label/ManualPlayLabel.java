@@ -54,12 +54,12 @@ public class ManualPlayLabel extends JLabel  {
         Font sequenceFont = new Font("Minerva", Font.PLAIN, 65);
         playerSequenceLabel.setFont(sequenceFont);
         playerSequenceLabel.setForeground(Color.black);
-        playerSequenceLabel.setBounds(85, 15, 200, 200);
+        playerSequenceLabel.setBounds(90, 15, 200, 200);
         this.add(playerSequenceLabel);
 
         computerSequenceLabel.setFont(sequenceFont);
         computerSequenceLabel.setForeground(Color.black);
-        computerSequenceLabel.setBounds(1080, 15, 200, 200);
+        computerSequenceLabel.setBounds(1085, 15, 200, 200);
         this.add(computerSequenceLabel);
 
         roundsLabel.setFont(new Font("Minerva", Font.PLAIN, 48));
@@ -69,7 +69,7 @@ public class ManualPlayLabel extends JLabel  {
 
         ribbonHistory.setFont(new Font("Minerva", Font.PLAIN, 48));
         ribbonHistory.setForeground(Color.black);
-        ribbonHistory.setBounds(20, 590, 1280, 100);
+        ribbonHistory.setBounds(0, 590, 1280, 100);
         ribbonHistory.setHorizontalAlignment(JLabel.CENTER);
         this.add(ribbonHistory);
 
