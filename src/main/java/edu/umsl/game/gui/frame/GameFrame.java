@@ -7,6 +7,8 @@ import edu.umsl.game.backend.Controller;
 import edu.umsl.game.gui.label.*;
 
 import java.awt.*;
+//todo remove this if not needed
+import java.rmi.dgc.VMID;
 
 //extend JFrame for use of java super class
 public  class GameFrame extends JFrame
@@ -17,6 +19,8 @@ public  class GameFrame extends JFrame
     StandardPlayLabel standardPlayLabel;
     SequenceLabel standardSequenceLabel;
     SequenceLabel manualSequenceLabel;
+    MidRoundLabel manualMidRoundLabel;
+    MidRoundLabel standardMidRoundLabel;
 
     //default constructor to prepare instance of the GameFrame with standard arrangement
     public GameFrame()
@@ -60,7 +64,11 @@ public  class GameFrame extends JFrame
         standardPlayLabel = new StandardPlayLabel();
         this.add(standardPlayLabel);
 
+        standardMidRoundLabel = new MidRoundLabel();
+        this.add(standardMidRoundLabel);
 
+        manualMidRoundLabel = new MidRoundLabel();
+        this.add(manualMidRoundLabel);
 
         //set visibility of all labels other than mainMenuLabel to false until needed
         exampleLabel.setVisible(false);
@@ -69,7 +77,8 @@ public  class GameFrame extends JFrame
         manualSequenceLabel.setVisible(false);
         manualPlayLabel.setVisible(false);
         standardPlayLabel.setVisible(false);
-
+        standardMidRoundLabel.setVisible(false);
+        manualMidRoundLabel.setVisible(false);
 
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
@@ -115,6 +124,10 @@ public  class GameFrame extends JFrame
         standardPlayLabel.getBt2().addActionListener( e -> {});
         standardPlayLabel.getBt3().addActionListener( e -> {});
 
+        //MidRound Screen
+        manualMidRoundLabel.getBtnMenu().addActionListener(e -> changeLabel(manualMidRoundLabel, mainMenuLabel));
+        manualMidRoundLabel.getBtnContinue().addActionListener(e -> changeLabel(manualMidRoundLabel, manualPlayLabel));
+
         //win/lose screen
 
     }
@@ -131,8 +144,8 @@ public  class GameFrame extends JFrame
             JLabel computerWins = manualPlayLabel.getComputerWinsLabel();
             JLabel ribbonHistory = manualPlayLabel.getRibbonLabel();
 
-            playerWins.setText("Wins:");
-            computerWins.setText("Wins:");
+            playerWins.setText("Wins: 0");
+            computerWins.setText("Wins: 0");
             ribbonHistory.setText("");
         }
     }
@@ -178,24 +191,35 @@ public  class GameFrame extends JFrame
         JLabel playerWinLabel = manualPlayLabel.getPlayerWinsLabel();
         JLabel computerWinLabel = manualPlayLabel.getComputerWinsLabel();
         JLabel ribbon = manualPlayLabel.getRibbonLabel();
+        JLabel roundCount = manualPlayLabel.getRoundsLabel();
 
         String win = controller.coinFlipped(coin);
         ribbon.setText(controller.getRibbonText());
 
         if (win == "player"){
             playerWinLabel.setText("Wins: " + String.valueOf(controller.getPlayerWins()));
-            System.out.println("You win this round!");
             controller.setRibbonText("");
+            controller.incrementRounds();
+            roundCount.setText(String.valueOf(controller.getRounds()));
             ribbon.setText("");
+            manualMidRoundLabel.getPlayerWinLabel().setText(String.valueOf(controller.getPlayerWins()));
 
             //change to mid win screen
+            manualMidRoundLabel.setVisible(true);
+            manualPlayLabel.setVisible(false);
+
 
         } else if (win == "computer"){
             computerWinLabel.setText("Wins: " + String.valueOf(controller.getComputerWins()));
-            System.out.println("The computer won this round");
             controller.setRibbonText("");
+            controller.incrementRounds();
+            roundCount.setText(String.valueOf(controller.getRounds()));
             ribbon.setText("");
+            manualMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
+
             //change to mid win screen
+            manualMidRoundLabel.setVisible(true);
+            manualPlayLabel.setVisible(false);
         }
 
         //if 10 wins are won go to win or lose screen
