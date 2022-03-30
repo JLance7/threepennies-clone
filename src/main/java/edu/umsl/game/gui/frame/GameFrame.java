@@ -171,9 +171,6 @@ public  class GameFrame extends JFrame
             controller.setRibbonText("");
             standardRibbon.setText("");
         }
-
-
-
     }
 
     //when head or tail button is clicked in manual
@@ -210,12 +207,9 @@ public  class GameFrame extends JFrame
             //winLoseScreenLabel = new WinLoseScreenLabel();
             changeLabel(manualPlayLabel, mainMenuLabel);
         }
-
     }
 
+    //TODO implement this function or take it out
     public void handleStandardLogic(){
-
     }
-
-
 }

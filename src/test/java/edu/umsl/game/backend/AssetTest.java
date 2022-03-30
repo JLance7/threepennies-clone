@@ -41,4 +41,9 @@ public class AssetTest {
         ImageIcon image = new ImageIcon("assets/images/thumbnail.png");
         assertNotNull(image);
     }
+    @Test //created by Avery Johnson - 3/29/2022
+    public void testMidRoundBackground(){
+        ImageIcon image = new ImageIcon("assets/images/MidRound.png");
+        assertNotNull(image);
+    }
 }
