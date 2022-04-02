@@ -1,6 +1,8 @@
 package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
+import edu.umsl.game.backend.MusicPlayer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -110,6 +112,9 @@ public class SequenceLabel extends JLabel
     //private function to be used in lambda from actionListener of the flip buttons
     private void flipLabel(JLabel label)
     {
+        String fileName = "sounds/buttonClick.wav";
+        MusicPlayer music = new MusicPlayer();
+        music.playMusic(fileName, false);
         if (label.getText().equals("H"))
         {
             label.setText("T");
@@ -124,5 +129,17 @@ public class SequenceLabel extends JLabel
     public String getSequence(){
         String sequence = lblSequence1.getText() + lblSequence2.getText() + lblSequence3.getText();
         return sequence;
+    }
+
+    public JLabel getLblSequence1(){
+        return lblSequence1;
+    }
+
+    public JLabel getLblSequence2(){
+        return lblSequence2;
+    }
+
+    public JLabel getLblSequence3(){
+        return lblSequence3;
     }
 }

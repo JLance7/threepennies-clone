@@ -11,6 +11,8 @@ public class Controller {
     int rounds = 0;
     int playerIndex = 0;
     int computerIndex = 0;
+    int lastPlayerIndex = 0;
+    int lastComputerIndex = 0;
 
 
     //Takes in the user's sequence and uses getComputerSequence to return the sequence with a higher probability of winning
@@ -55,7 +57,7 @@ public class Controller {
     public String coinFlipped(String coin){
         ribbonText = ribbonText + coin;
         //if ribbon is too long remove first char (unlikely)
-        if (ribbonText.length() == 47){
+        if (ribbonText.length() == 46){
             ribbonText = ribbonText.substring(1);
         }
 
@@ -89,10 +91,13 @@ public class Controller {
             if (ribbonText.length() <= 3){
                 if (coin.charAt(0) == userSequence.charAt(playerIndex)){
                     playerIndex++;
-                    if (playerIndex == 3)
+                    lastPlayerIndex = playerIndex;
+                    if (playerIndex == 3){
                         return true;
+                    }
                 } else{
                     playerIndex = 0;
+                    lastPlayerIndex = playerIndex;
                 }
             }
             else {
@@ -102,8 +107,9 @@ public class Controller {
                     for (int j = i; j < ribbonText.length(); j++) {
                         if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)) {
                             playerIndex++;
-                            if (playerIndex == 3)
+                            if (playerIndex == 3){
                                 return true;
+                            }
                         } else {
                             playerIndex = 0;
                         }
@@ -115,8 +121,9 @@ public class Controller {
             if (ribbonText.length() <= 3){
                 if (coin.charAt(0) == computerSequence.charAt(computerIndex)){
                     computerIndex++;
-                    if (computerIndex == 3)
+                    if (computerIndex == 3){
                         return true;
+                    }
                 } else{
                     computerIndex = 0;
                 }
@@ -126,8 +133,9 @@ public class Controller {
                     for (int j = i; j< ribbonText.length(); j++){
                         if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
                             computerIndex++;
-                            if (computerIndex == 3)
+                            if (computerIndex == 3){
                                 return true;
+                            }
                         } else{
                             computerIndex = 0;
                         }
@@ -149,6 +157,43 @@ public class Controller {
             return "";
     }
 
+    //get how many checks should be shown for each player
+    public int[] getPlayerAndComputerPosition(){
+        //user sequence
+        lastPlayerIndex = 0;
+        int k=0;
+        for (int i=0; i<ribbonText.length(); i++){
+            for (int j=0; j<userSequence.length(); j++){
+                if (ribbonText.charAt(k) == userSequence.charAt(j)){
+                    lastPlayerIndex++;
+                    k++;
+                    if (k == 3)
+                        break;
+                } else{
+                    lastPlayerIndex = 0;
+                }
+            }
+        }
+        //computer sequence
+        lastComputerIndex = 0;
+        k = 0;
+        for (int i=0; i<ribbonText.length(); i++){
+            for (int j=0; j<computerSequence.length(); j++){
+                if (ribbonText.charAt(k) == userSequence.charAt(j)){
+                    lastComputerIndex++;
+                    k++;
+                    if (k == 3)
+                        break;
+                } else{
+                    lastComputerIndex = 0;
+                }
+            }
+        }
+
+        int[] indexes = {lastPlayerIndex, lastComputerIndex};
+        return indexes;
+    }
+
     //set which version of the game, "manual" or "standard"
     public void setGameVersion(String version){
         this.gameVersion = version;
@@ -168,6 +213,14 @@ public class Controller {
 
     public int getRounds(){
         return rounds;
+    }
+
+    public void setComputerChecks(int x){
+        lastComputerIndex = x;
+    }
+
+    public void setPlayerChecks(int x){
+        lastPlayerIndex = x;
     }
 
     public String getRibbonText(){ return ribbonText; }

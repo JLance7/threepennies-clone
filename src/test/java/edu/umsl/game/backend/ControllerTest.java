@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class ControllerTest {
     //test computer sequence method from controller
-    @Test //TODO add test to "Tests Performed" doc, add what date josh performed it as a comment here as well
+    @Test //performed 3/30/22
     public void testAllSequences(){
         //get returned list of two values, expected computer sequence response and actual computer sequence response
         String results[] = testComputerSequence("HHH");
@@ -33,8 +33,7 @@ public class ControllerTest {
         String results8[] = testComputerSequence("THT");
         assertEquals(results[0], results[1]);
     }
-    //TODO add test to "Tests Performed" doc, add what date josh performed it as a comment here as well
-    //TODO Check if this needs '@Test' added to it, it doesn't currently
+    //performed 3/30/22
     //tests the ComputerSequence class in backend package which determines the higher probability sequence for the computer given the user's sequence
     public String[] testComputerSequence(String testString){
         Controller sequence = new Controller();
