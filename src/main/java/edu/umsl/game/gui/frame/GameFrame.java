@@ -190,10 +190,12 @@ public  class GameFrame extends JFrame implements ActionListener
             manualSequenceLabel.getLblSequence2().setText("H");
             manualSequenceLabel.getLblSequence3().setText("H");
         }
-        if (start == manualMidRoundLabel || start == standardMidRoundLabel){
+        if (start == manualMidRoundLabel ){
             //add action listener back after winning a round
             manualPlayLabel.getHeadButton().addActionListener(this);
             manualPlayLabel.getTailsBtn().addActionListener(this);
+        }
+        if (start == standardMidRoundLabel){
             standardPlayLabel.getFlipButton().addActionListener(this);
         }
     }
@@ -312,19 +314,27 @@ public  class GameFrame extends JFrame implements ActionListener
         music = new MusicPlayer();
         music.playMusic(fileName, false);
 
-        //random number between 1 and 5 for how many flips (flip coin randomly)
+        //random number between 1 and 6 for how many flips (flip coin randomly)
         Random random = new Random();
-        final int[] flips = {random.nextInt(5 - 1) + 1};
+        final int[] flips = {random.nextInt(6 - 1) + 1};
         //System.out.println("Flips is:" + flips[0]);
 
-        //delay half a second (flip coin random number of times)
         ImageIcon headImg = new ImageIcon(getClass().getClassLoader().getResource("images/heads.png"));
         ImageIcon tailsImg = new ImageIcon(getClass().getClassLoader().getResource("images/tails.png"));
         Image tailsScaled = tailsImg.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         Image headScaled = headImg.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 
+        ImageIcon headGif = new ImageIcon(getClass().getClassLoader().getResource("images/H to T.gif"));
+        ImageIcon tailsGif = new ImageIcon(getClass().getClassLoader().getResource("images/T to H.gif"));
+        Image headsGifScaled = headGif.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+        Image tailsGifScaled = tailsGif.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+
         ImageIcon headScaledIcon = new ImageIcon(headScaled);
         ImageIcon tailsScaledIcon = new ImageIcon(tailsScaled);
+        ImageIcon headsGifIcon = new ImageIcon(headsGifScaled);
+        ImageIcon tailsGifIcon = new ImageIcon(tailsGifScaled);
+
+        //delay half a second (flip coin random number of times)
         ActionListener action = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -336,9 +346,11 @@ public  class GameFrame extends JFrame implements ActionListener
                 //System.out.println("Side is: " + standardPlayLabel.getFlipButton().getText().charAt(0));
                 else if (currentSide == 'H'){
                     standardPlayLabel.setSide("T");
+                    //standardPlayLabel.getFlipButton().setIcon(headsGifIcon);
                     standardPlayLabel.getFlipButton().setIcon(tailsScaledIcon);
                 } else {
                     standardPlayLabel.setSide("H");
+                    //standardPlayLabel.getFlipButton().setIcon(tailsGifIcon);
                     standardPlayLabel.getFlipButton().setIcon(headScaledIcon);
                 }
                 flips[0]--;
@@ -400,10 +412,10 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(manualPlayLabel, mainMenuLabel);
+            changeLabel(standardPlayLabel, mainMenuLabel);
             standardMidRoundLabel.setVisible(false);
         } else if (totalWins == "computer"){
-            changeLabel(manualPlayLabel, mainMenuLabel);
+            changeLabel(standardPlayLabel, mainMenuLabel);
             standardMidRoundLabel.setVisible(false);
         }
 

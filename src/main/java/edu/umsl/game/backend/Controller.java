@@ -97,7 +97,6 @@ public class Controller {
                     }
                 } else{
                     playerIndex = 0;
-                    lastPlayerIndex = playerIndex;
                 }
             }
             else {
@@ -113,7 +112,6 @@ public class Controller {
                             }
                         } else {
                             playerIndex = 0;
-                            lastPlayerIndex = playerIndex;
                         }
                     }
                     playerIndex = 0;
@@ -129,7 +127,6 @@ public class Controller {
                     }
                 } else{
                     computerIndex = 0;
-                    lastComputerIndex = computerIndex;
                 }
             } else{
                 computerIndex = 0;
@@ -143,7 +140,6 @@ public class Controller {
                             }
                         } else{
                             computerIndex = 0;
-                            lastComputerIndex = computerIndex;
                         }
                     }
                     computerIndex = 0;

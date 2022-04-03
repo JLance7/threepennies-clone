@@ -23,7 +23,7 @@ public class ManualPlayLabel extends PlayLabel {
 
         //headsBtn.setIcon(headImg);
         headsBtn.setFocusable(false);
-        headsBtn.setBounds(405, 260, 200, 200);
+        headsBtn.setBounds(415, 260, 200, 200);
         headsBtn.setIcon(headScaledIcon);
         headsBtn.setBorderPainted(false);
         headsBtn.setContentAreaFilled(false);
