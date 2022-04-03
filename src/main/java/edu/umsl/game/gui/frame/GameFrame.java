@@ -346,12 +346,26 @@ public  class GameFrame extends JFrame implements ActionListener
                 //System.out.println("Side is: " + standardPlayLabel.getFlipButton().getText().charAt(0));
                 else if (currentSide == 'H'){
                     standardPlayLabel.setSide("T");
-                    //standardPlayLabel.getFlipButton().setIcon(headsGifIcon);
-                    standardPlayLabel.getFlipButton().setIcon(tailsScaledIcon);
+                    standardPlayLabel.getFlipButton().setIcon(headsGifIcon);
+                    Timer newTimer = new Timer(30, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            standardPlayLabel.getFlipButton().setIcon(tailsScaledIcon);
+                        }
+                    });
+                    newTimer.setRepeats(false);
+                    newTimer.start();
                 } else {
                     standardPlayLabel.setSide("H");
-                    //standardPlayLabel.getFlipButton().setIcon(tailsGifIcon);
-                    standardPlayLabel.getFlipButton().setIcon(headScaledIcon);
+                    standardPlayLabel.getFlipButton().setIcon(tailsGifIcon);
+                    Timer newTimer = new Timer(30, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            standardPlayLabel.getFlipButton().setIcon(headScaledIcon);;
+                        }
+                    });
+                    newTimer.setRepeats(false);
+                    newTimer.start();
                 }
                 flips[0]--;
             }
@@ -431,8 +445,8 @@ public  class GameFrame extends JFrame implements ActionListener
         int computerChecks = indexes[1];
         String playerChecksString = "", computerChecksString = "";
 
-        System.out.println("\nplayerchecks: " + playerChecks);
-        System.out.println("computerchecks: " + computerChecks);
+        //System.out.println("\nplayerchecks: " + playerChecks);
+        //System.out.println("computerchecks: " + computerChecks);
 
         for (int i=0; i<playerChecks; i++){
             playerChecksString += "\u2713";

@@ -12,28 +12,28 @@ public class ControllerTest {
         //expected, actual
         assertEquals(results[0], results[1]);
 
-        String results2[] = testComputerSequence("THH"); //TODO the results of these tests don't compare anything
-        assertEquals(results[0], results[1]);
+        String results2[] = testComputerSequence("THH");
+        assertEquals(results2[0], results2[1]);
 
         String results3[] =testComputerSequence("HHT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results3[0], results3[1]);
 
         String results4[] = testComputerSequence("HTH");
-        assertEquals(results[0], results[1]);
+        assertEquals(results4[0], results4[1]);
 
         String results5[] = testComputerSequence("HTT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results5[0], results5[1]);
 
         String results6[] = testComputerSequence("TTT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results6[0], results6[1]);
 
         String results7[] = testComputerSequence("TTH");
-        assertEquals(results[0], results[1]);
+        assertEquals(results7[0], results7[1]);
 
         String results8[] = testComputerSequence("THT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results8[0], results8[1]);
     }
-    //performed 3/30/22
+
     //tests the ComputerSequence class in backend package which determines the higher probability sequence for the computer given the user's sequence
     public String[] testComputerSequence(String testString){
         Controller sequence = new Controller();
