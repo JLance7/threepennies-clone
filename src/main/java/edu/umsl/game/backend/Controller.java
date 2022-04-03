@@ -107,11 +107,13 @@ public class Controller {
                     for (int j = i; j < ribbonText.length(); j++) {
                         if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)) {
                             playerIndex++;
+                            lastPlayerIndex = playerIndex;
                             if (playerIndex == 3){
                                 return true;
                             }
                         } else {
                             playerIndex = 0;
+                            lastPlayerIndex = playerIndex;
                         }
                     }
                     playerIndex = 0;
@@ -121,11 +123,13 @@ public class Controller {
             if (ribbonText.length() <= 3){
                 if (coin.charAt(0) == computerSequence.charAt(computerIndex)){
                     computerIndex++;
+                    lastComputerIndex = computerIndex;
                     if (computerIndex == 3){
                         return true;
                     }
                 } else{
                     computerIndex = 0;
+                    lastComputerIndex = computerIndex;
                 }
             } else{
                 computerIndex = 0;
@@ -133,11 +137,13 @@ public class Controller {
                     for (int j = i; j< ribbonText.length(); j++){
                         if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
                             computerIndex++;
+                            lastComputerIndex = computerIndex;
                             if (computerIndex == 3){
                                 return true;
                             }
                         } else{
                             computerIndex = 0;
+                            lastComputerIndex = computerIndex;
                         }
                     }
                     computerIndex = 0;
@@ -159,37 +165,6 @@ public class Controller {
 
     //get how many checks should be shown for each player
     public int[] getPlayerAndComputerPosition(){
-        //user sequence
-        lastPlayerIndex = 0;
-        int k=0;
-        for (int i=0; i<ribbonText.length(); i++){
-            for (int j=0; j<userSequence.length(); j++){
-                if (ribbonText.charAt(k) == userSequence.charAt(j)){
-                    lastPlayerIndex++;
-                    k++;
-                    if (k == 3)
-                        break;
-                } else{
-                    lastPlayerIndex = 0;
-                }
-            }
-        }
-        //computer sequence
-        lastComputerIndex = 0;
-        k = 0;
-        for (int i=0; i<ribbonText.length(); i++){
-            for (int j=0; j<computerSequence.length(); j++){
-                if (ribbonText.charAt(k) == userSequence.charAt(j)){
-                    lastComputerIndex++;
-                    k++;
-                    if (k == 3)
-                        break;
-                } else{
-                    lastComputerIndex = 0;
-                }
-            }
-        }
-
         int[] indexes = {lastPlayerIndex, lastComputerIndex};
         return indexes;
     }

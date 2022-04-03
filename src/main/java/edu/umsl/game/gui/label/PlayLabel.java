@@ -1,10 +1,14 @@
 package edu.umsl.game.gui.label;
 
+import edu.umsl.game.backend.MusicPlayer;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class PlayLabel extends JLabel  {
+public abstract class PlayLabel extends JLabel  {
     JButton btnMenu = new JButton("MENU");
     JLabel playerSequenceLabel = new JLabel();
     JLabel computerSequenceLabel = new JLabel();
@@ -14,9 +18,10 @@ public class PlayLabel extends JLabel  {
     JLabel computerWins = new JLabel();
     JLabel playerChecks = new JLabel();
     JLabel computerChecks = new JLabel();
+    JButton explanation = new JButton();
 
 
-    public PlayLabel(String backgroundFile){
+    public PlayLabel(String backgroundFile, String howToPlay){
         ImageIcon image = null;
         try{
             image = new ImageIcon(getClass().getClassLoader().getResource(backgroundFile));
@@ -53,7 +58,7 @@ public class PlayLabel extends JLabel  {
 
         ribbonHistory.setFont(new Font("Minerva", Font.PLAIN, 48));
         ribbonHistory.setForeground(Color.black);
-        ribbonHistory.setBounds(0, 590, 1280, 100);
+        ribbonHistory.setBounds(-5, 590, 1280, 100);
         ribbonHistory.setHorizontalAlignment(JLabel.CENTER);
         this.add(ribbonHistory);
 
@@ -78,6 +83,31 @@ public class PlayLabel extends JLabel  {
         computerChecks.setForeground(Color.red);
         computerChecks.setBounds(1085, 87, 200, 200);
         this.add(computerChecks);
+
+        explanation.setFont(new Font("Minerva", Font.PLAIN, 22));
+        explanation.setForeground(Color.black);
+        explanation.setFocusable(false);
+        explanation.setBackground(new Color(230, 100, 100));
+        explanation.setBounds(70, 420, 140, 70);
+        explanation.setBorder(BorderFactory.createRaisedBevelBorder());
+        explanation.setText("How to play");
+        explanation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //play button click music
+                MusicPlayer music;
+                String fileName = "sounds/buttonClick.wav";
+                music = new MusicPlayer();
+                music.playMusic(fileName, false);
+                JOptionPane dialog = new JOptionPane();
+                dialog.setFocusable(false);
+                dialog.showMessageDialog(null,
+                        howToPlay,
+                        "How to Play",
+                        JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+        this.add(explanation);
     }
 
     public JButton getBtnMenu() { return btnMenu; }
