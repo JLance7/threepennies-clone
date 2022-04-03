@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="edu.umsl.game.backend.AssetTest" time="0.411" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="edu.umsl.game.backend.AssetTest" time="0.305" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2020.3.4"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -59,12 +59,12 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMainMenuBackground" time="0.12"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManualPlayBackground" time="0.034"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testGameIcon" time="0.048"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMidRoundBackground" time="0.024"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExamplePageBackground" time="0.031"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesPageBackground" time="0.051"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testReadMeThumbnail" time="0.023"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequencePageBackground" time="0.08"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMainMenuBackground" time="0.121"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManualPlayBackground" time="0.031"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testGameIcon" time="0.047"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMidRoundBackground" time="0.026"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExamplePageBackground" time="0.022"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesPageBackground" time="0.028"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testReadMeThumbnail" time="0.014"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequencePageBackground" time="0.016"/>
 </testsuite>
