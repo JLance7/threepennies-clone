@@ -2,17 +2,24 @@ package edu.umsl.game.gui.frame;
 
 //import MainMenuPanel access and swing wildcard for GUI development
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 
 import edu.umsl.game.backend.Controller;
+import edu.umsl.game.backend.MusicPlayer;
 import edu.umsl.game.gui.label.*;
 
 import java.awt.*;
-//todo remove this if not needed
-import java.rmi.dgc.VMID;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 
 //extend JFrame for use of java super class
-public  class GameFrame extends JFrame
+public  class GameFrame extends JFrame implements ActionListener
 {
+    MusicPlayer music;
     Controller controller;
     MainMenuLabel mainMenuLabel;
     ManualPlayLabel manualPlayLabel;
@@ -21,10 +28,17 @@ public  class GameFrame extends JFrame
     SequenceLabel manualSequenceLabel;
     MidRoundLabel manualMidRoundLabel;
     MidRoundLabel standardMidRoundLabel;
+    Timer timer;
+
 
     //default constructor to prepare instance of the GameFrame with standard arrangement
     public GameFrame()
     {
+        //play music
+        String fileName = "sounds/Elevator-by-Kevin-Macleod.wav";
+        music = new MusicPlayer();
+        music.playMusic(fileName, true);
+
         controller = new Controller();
         this.setTitle("Three Pennies");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,10 +72,16 @@ public  class GameFrame extends JFrame
         manualSequenceLabel = new SequenceLabel();
         this.add(manualSequenceLabel);
 
-        manualPlayLabel = new ManualPlayLabel();
+        String backgroundLocation = "images/manual.png";
+        String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
+        "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
+        manualPlayLabel = new ManualPlayLabel(backgroundLocation, howToString);
         this.add(manualPlayLabel);
 
-        standardPlayLabel = new StandardPlayLabel();
+        backgroundLocation = "images/standard.png";
+        howToString = "Flip the coin for to get a random flip of heads or tails" +
+        "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
+        standardPlayLabel = new StandardPlayLabel(backgroundLocation, howToString);
         this.add(standardPlayLabel);
 
         standardMidRoundLabel = new MidRoundLabel();
@@ -69,6 +89,7 @@ public  class GameFrame extends JFrame
 
         manualMidRoundLabel = new MidRoundLabel();
         this.add(manualMidRoundLabel);
+
 
         //set visibility of all labels other than mainMenuLabel to false until needed
         exampleLabel.setVisible(false);
@@ -83,10 +104,7 @@ public  class GameFrame extends JFrame
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
         //center frame
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
-        this.setLocation(x, y);
+        this.setLocationRelativeTo(null);
 
         /*
         The following block of code consists of actions being fed to action listeners for every button
@@ -115,18 +133,18 @@ public  class GameFrame extends JFrame
 
         //manual play
         manualPlayLabel.getBtnMenu().addActionListener(e -> changeLabel(manualPlayLabel, mainMenuLabel));
-        manualPlayLabel.getHeadButton().addActionListener(e -> { handleManualLogic("H"); });
-        manualPlayLabel.getTailsBtn().addActionListener(e -> { handleManualLogic("T"); });
+        manualPlayLabel.getHeadButton().addActionListener(this);
+        manualPlayLabel.getTailsBtn().addActionListener(this);
 
         //standard play
         standardPlayLabel.getBtnMenu().addActionListener(e -> changeLabel(standardPlayLabel, mainMenuLabel));
-        standardPlayLabel.getBt1().addActionListener( e -> {});
-        standardPlayLabel.getBt2().addActionListener( e -> {});
-        standardPlayLabel.getBt3().addActionListener( e -> {});
+        standardPlayLabel.getFlipButton().addActionListener(this);
 
         //MidRound Screen
         manualMidRoundLabel.getBtnMenu().addActionListener(e -> changeLabel(manualMidRoundLabel, mainMenuLabel));
         manualMidRoundLabel.getBtnContinue().addActionListener(e -> changeLabel(manualMidRoundLabel, manualPlayLabel));
+        standardMidRoundLabel.getBtnMenu().addActionListener(e -> changeLabel(standardMidRoundLabel, mainMenuLabel));
+        standardMidRoundLabel.getBtnContinue().addActionListener(e -> changeLabel(standardMidRoundLabel, standardPlayLabel));
 
         //win/lose screen
 
@@ -135,6 +153,10 @@ public  class GameFrame extends JFrame
     //function to transfer visibility from one label to another
     public void changeLabel(JLabel start, JLabel end)
     {
+        //play button click music
+        String fileName = "sounds/buttonClick.wav";
+        music = new MusicPlayer();
+        music.playMusic(fileName, false);
         start.setVisible(false);
         end.setVisible(true);
         //if changing to manualSequence/standardSequence again reset game states
@@ -143,15 +165,48 @@ public  class GameFrame extends JFrame
             JLabel playerWins = manualPlayLabel.getPlayerWinsLabel();
             JLabel computerWins = manualPlayLabel.getComputerWinsLabel();
             JLabel ribbonHistory = manualPlayLabel.getRibbonLabel();
+            JLabel playerWinsStandard = standardPlayLabel.getPlayerWinsLabel();
+            JLabel computerWinsStandard = standardPlayLabel.getComputerWinsLabel();
+            JLabel ribbonHistoryStandard = standardPlayLabel.getRibbonLabel();
 
             playerWins.setText("Wins: 0");
             computerWins.setText("Wins: 0");
             ribbonHistory.setText("");
+            playerWinsStandard.setText("Wins: 0");
+            computerWinsStandard.setText("Wins: 0");
+            ribbonHistoryStandard.setText("");
+            manualMidRoundLabel.getComputerWinLabel().setText("0");
+            manualMidRoundLabel.getPlayerWinLabel().setText("0");
+            standardMidRoundLabel.getComputerWinLabel().setText("0");
+            standardMidRoundLabel.getPlayerWinLabel().setText("0");
+
+        }
+        if (start == mainMenuLabel){
+            //reset sequence page
+            standardSequenceLabel.getLblSequence1().setText("H");
+            standardSequenceLabel.getLblSequence2().setText("H");
+            standardSequenceLabel.getLblSequence3().setText("H");
+            manualSequenceLabel.getLblSequence1().setText("H");
+            manualSequenceLabel.getLblSequence2().setText("H");
+            manualSequenceLabel.getLblSequence3().setText("H");
+        }
+        if (start == manualMidRoundLabel ){
+            //add action listener back after winning a round
+            manualPlayLabel.getHeadButton().addActionListener(this);
+            manualPlayLabel.getTailsBtn().addActionListener(this);
+        }
+        if (start == standardMidRoundLabel){
+            standardPlayLabel.getFlipButton().addActionListener(this);
         }
     }
 
     //from sequenceLabel to manual/standard play label, gives it the sequence (when submit button is clicked on sequence page)
     public void sequenceLabelChange(JLabel start, JLabel end, String sequence, boolean manualPlay){
+        //play button click music
+        String fileName = "sounds/buttonClick.wav";
+        music = new MusicPlayer();
+        music.playMusic(fileName, false);
+
         JLabel manualPlayer = manualPlayLabel.getPlayerLabel();
         JLabel manualComputer = manualPlayLabel.getComputerLabel();
         JLabel manualRounds = manualPlayLabel.getRoundsLabel();
@@ -160,7 +215,7 @@ public  class GameFrame extends JFrame
         JLabel standardPlayer = standardPlayLabel.getPlayerLabel();
         JLabel standardComputer = standardPlayLabel.getComputerLabel();
         JLabel standardRounds = standardPlayLabel.getRoundsLabel();
-        JLabel standardRibbon = standardPlayLabel.getRibbonHistory();
+        JLabel standardRibbon = standardPlayLabel.getRibbonLabel();
 
         start.setVisible(false);
         end.setVisible(true);
@@ -188,52 +243,241 @@ public  class GameFrame extends JFrame
 
     //when head or tail button is clicked in manual
     public void handleManualLogic(String coin) {
+        //play button click music
+        String fileName = "sounds/coin flip.wav";
+        music = new MusicPlayer();
+        music.playMusic(fileName, false);
+
         JLabel playerWinLabel = manualPlayLabel.getPlayerWinsLabel();
         JLabel computerWinLabel = manualPlayLabel.getComputerWinsLabel();
         JLabel ribbon = manualPlayLabel.getRibbonLabel();
         JLabel roundCount = manualPlayLabel.getRoundsLabel();
+        JLabel playerChecksLabel = manualPlayLabel.getPlayerChecks();
+        JLabel computerChecksLabel = manualPlayLabel.getComputerChecks();
 
         String win = controller.coinFlipped(coin);
         ribbon.setText(controller.getRibbonText());
 
-        if (win == "player"){
-            playerWinLabel.setText("Wins: " + String.valueOf(controller.getPlayerWins()));
-            controller.setRibbonText("");
-            controller.incrementRounds();
-            roundCount.setText(String.valueOf(controller.getRounds()));
-            ribbon.setText("");
-            manualMidRoundLabel.getPlayerWinLabel().setText(String.valueOf(controller.getPlayerWins()));
+        setCheckMarks(true);
 
-            //change to mid win screen
-            manualMidRoundLabel.setVisible(true);
-            manualPlayLabel.setVisible(false);
+        Timer timer;
+        if (win == "player" || win == "computer"){
+            if (win == "player")
+                playerWinLabel.setText("Wins: " + String.valueOf(controller.getPlayerWins()));
+            else
+                computerWinLabel.setText("Wins: " + String.valueOf(controller.getComputerWins()));
 
+            manualPlayLabel.getHeadButton().removeActionListener(this);
+            manualPlayLabel.getTailsBtn().removeActionListener(this);
 
-        } else if (win == "computer"){
-            computerWinLabel.setText("Wins: " + String.valueOf(controller.getComputerWins()));
-            controller.setRibbonText("");
-            controller.incrementRounds();
-            roundCount.setText(String.valueOf(controller.getRounds()));
-            ribbon.setText("");
-            manualMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
+            //pause screen after win
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    controller.setRibbonText("");
+                    controller.incrementRounds();
+                    roundCount.setText(String.valueOf(controller.getRounds()));
+                    ribbon.setText("");
+                    playerChecksLabel.setText("");
+                    computerChecksLabel.setText("");
+                    controller.setComputerChecks(0);
+                    controller.setPlayerChecks(0);
 
-            //change to mid win screen
-            manualMidRoundLabel.setVisible(true);
-            manualPlayLabel.setVisible(false);
+                    //mid win screen
+                    if (win == "player")
+                        manualMidRoundLabel.getPlayerWinLabel().setText(String.valueOf(controller.getPlayerWins()));
+                    else
+                        manualMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
+
+                    manualMidRoundLabel.setVisible(true);
+                    manualPlayLabel.setVisible(false);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         }
 
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            //winLoseScreenLabel = new WinLoseScreenLabel();
             changeLabel(manualPlayLabel, mainMenuLabel);
+            manualMidRoundLabel.setVisible(false);
         } else if (totalWins == "computer"){
-            //winLoseScreenLabel = new WinLoseScreenLabel();
             changeLabel(manualPlayLabel, mainMenuLabel);
+            manualMidRoundLabel.setVisible(false);
         }
     }
 
-    //TODO implement this function or take it out
-    public void handleStandardLogic(){
+    public void handleStandardLogic() throws InterruptedException {
+        //play button click music
+        String fileName = "sounds/coin flip.wav";
+        music = new MusicPlayer();
+        music.playMusic(fileName, false);
+
+        //random number between 1 and 6 for how many flips (flip coin randomly)
+        Random random = new Random();
+        final int[] flips = {random.nextInt(6 - 1) + 1};
+        //System.out.println("Flips is:" + flips[0]);
+
+        ImageIcon headImg = new ImageIcon(getClass().getClassLoader().getResource("images/heads.png"));
+        ImageIcon tailsImg = new ImageIcon(getClass().getClassLoader().getResource("images/tails.png"));
+        Image tailsScaled = tailsImg.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+        Image headScaled = headImg.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+
+        ImageIcon headGif = new ImageIcon(getClass().getClassLoader().getResource("images/H to T.gif"));
+        ImageIcon tailsGif = new ImageIcon(getClass().getClassLoader().getResource("images/T to H.gif"));
+        Image headsGifScaled = headGif.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+        Image tailsGifScaled = tailsGif.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+
+        ImageIcon headScaledIcon = new ImageIcon(headScaled);
+        ImageIcon tailsScaledIcon = new ImageIcon(tailsScaled);
+        ImageIcon headsGifIcon = new ImageIcon(headsGifScaled);
+        ImageIcon tailsGifIcon = new ImageIcon(tailsGifScaled);
+
+        //delay half a second (flip coin random number of times)
+        ActionListener action = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                char currentSide = standardPlayLabel.getSide().charAt(0);
+                if (flips[0] == 0) {
+                    timer.stop();
+                    continueStandardLogic();
+                }
+                //System.out.println("Side is: " + standardPlayLabel.getFlipButton().getText().charAt(0));
+                else if (currentSide == 'H'){
+                    standardPlayLabel.setSide("T");
+                    standardPlayLabel.getFlipButton().setIcon(headsGifIcon);
+                    Timer newTimer = new Timer(30, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            standardPlayLabel.getFlipButton().setIcon(tailsScaledIcon);
+                        }
+                    });
+                    newTimer.setRepeats(false);
+                    newTimer.start();
+                } else {
+                    standardPlayLabel.setSide("H");
+                    standardPlayLabel.getFlipButton().setIcon(tailsGifIcon);
+                    Timer newTimer = new Timer(30, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            standardPlayLabel.getFlipButton().setIcon(headScaledIcon);;
+                        }
+                    });
+                    newTimer.setRepeats(false);
+                    newTimer.start();
+                }
+                flips[0]--;
+            }
+        };
+        timer = new Timer(500, action);
+        timer.setInitialDelay(0);
+        timer.start();
+        standardPlayLabel.getFlipButton().removeActionListener(this);
+    }
+
+    public void continueStandardLogic(){
+        JLabel playerWinLabel = standardPlayLabel.getPlayerWinsLabel();
+        JLabel computerWinLabel = standardPlayLabel.getComputerWinsLabel();
+        JLabel ribbon = standardPlayLabel.getRibbonLabel();
+        JLabel roundCount = standardPlayLabel.getRoundsLabel();
+        JLabel playerChecksLabel = standardPlayLabel.getPlayerChecks();
+        JLabel computerChecksLabel = standardPlayLabel.getComputerChecks();
+
+        //after flipping coin randomly check win stuff
+        String win = controller.coinFlipped(standardPlayLabel.getSide());
+        standardPlayLabel.getRibbonLabel().setText(controller.getRibbonText());
+
+        setCheckMarks(false);
+
+        if (win == "player" || win == "computer"){
+            if (win == "player")
+                playerWinLabel.setText("Wins: " + String.valueOf(controller.getPlayerWins()));
+            else
+                computerWinLabel.setText("Wins: " + String.valueOf(controller.getComputerWins()));
+
+            //pause screen after win
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    controller.setRibbonText("");
+                    controller.incrementRounds();
+                    roundCount.setText(String.valueOf(controller.getRounds()));
+                    ribbon.setText("");
+                    playerChecksLabel.setText("");
+                    computerChecksLabel.setText("");
+                    controller.setComputerChecks(0);
+                    controller.setPlayerChecks(0);
+
+                    //mid win screen
+                    if (win == "player")
+                        standardMidRoundLabel.getPlayerWinLabel().setText(String.valueOf(controller.getPlayerWins()));
+                    else
+                        standardMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
+
+                    standardMidRoundLabel.setVisible(true);
+                    standardPlayLabel.setVisible(false);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+        }
+
+        //if 10 wins are won go to win or lose screen
+        String totalWins = controller.checkTotalWins();
+        if (totalWins == "player"){
+            changeLabel(standardPlayLabel, mainMenuLabel);
+            standardMidRoundLabel.setVisible(false);
+        } else if (totalWins == "computer"){
+            changeLabel(standardPlayLabel, mainMenuLabel);
+            standardMidRoundLabel.setVisible(false);
+        }
+
+        if (win == "")
+            standardPlayLabel.getFlipButton().addActionListener(this);
+    }
+
+    //TODO this is not working correctly right now
+    public void setCheckMarks(boolean manual){
+        //set check marks
+        int[] indexes = controller.getPlayerAndComputerPosition();
+        int playerChecks = indexes[0];
+        int computerChecks = indexes[1];
+        String playerChecksString = "", computerChecksString = "";
+
+        //System.out.println("\nplayerchecks: " + playerChecks);
+        //System.out.println("computerchecks: " + computerChecks);
+
+        for (int i=0; i<playerChecks; i++){
+            playerChecksString += "\u2713";
+        }
+        for (int i=0; i<computerChecks; i++){
+            computerChecksString += "\u2713";
+        }
+        if(manual){
+            manualPlayLabel.getPlayerChecks().setText(playerChecksString);
+            manualPlayLabel.getComputerChecks().setText(computerChecksString);
+        }
+        else{
+            standardPlayLabel.getPlayerChecks().setText(playerChecksString);
+            standardPlayLabel.getComputerChecks().setText(computerChecksString);
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == manualPlayLabel.getHeadButton()){
+            handleManualLogic("H");
+        }
+        if (e.getSource() == manualPlayLabel.getTailsBtn()){
+            handleManualLogic("T");
+        }
+        if (e.getSource() == standardPlayLabel.getFlipButton()){
+            try {
+                handleStandardLogic();
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+        }
     }
 }

@@ -5,36 +5,35 @@ import static org.junit.Assert.*;
 
 public class ControllerTest {
     //test computer sequence method from controller
-    @Test //TODO add test to "Tests Performed" doc, add what date josh performed it as a comment here as well
+    @Test //performed 3/30/22
     public void testAllSequences(){
         //get returned list of two values, expected computer sequence response and actual computer sequence response
         String results[] = testComputerSequence("HHH");
         //expected, actual
         assertEquals(results[0], results[1]);
 
-        String results2[] = testComputerSequence("THH"); //TODO the results of these tests don't compare anything
-        assertEquals(results[0], results[1]);
+        String results2[] = testComputerSequence("THH");
+        assertEquals(results2[0], results2[1]);
 
         String results3[] =testComputerSequence("HHT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results3[0], results3[1]);
 
         String results4[] = testComputerSequence("HTH");
-        assertEquals(results[0], results[1]);
+        assertEquals(results4[0], results4[1]);
 
         String results5[] = testComputerSequence("HTT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results5[0], results5[1]);
 
         String results6[] = testComputerSequence("TTT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results6[0], results6[1]);
 
         String results7[] = testComputerSequence("TTH");
-        assertEquals(results[0], results[1]);
+        assertEquals(results7[0], results7[1]);
 
         String results8[] = testComputerSequence("THT");
-        assertEquals(results[0], results[1]);
+        assertEquals(results8[0], results8[1]);
     }
-    //TODO add test to "Tests Performed" doc, add what date josh performed it as a comment here as well
-    //TODO Check if this needs '@Test' added to it, it doesn't currently
+
     //tests the ComputerSequence class in backend package which determines the higher probability sequence for the computer given the user's sequence
     public String[] testComputerSequence(String testString){
         Controller sequence = new Controller();
