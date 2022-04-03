@@ -175,10 +175,10 @@ public  class GameFrame extends JFrame implements ActionListener
             playerWinsStandard.setText("Wins: 0");
             computerWinsStandard.setText("Wins: 0");
             ribbonHistoryStandard.setText("");
-            manualMidRoundLabel.getComputerWinLabel().setText("");
-            manualMidRoundLabel.getPlayerWinLabel().setText("");
-            standardMidRoundLabel.getComputerWinLabel().setText("");
-            standardMidRoundLabel.getPlayerWinLabel().setText("");
+            manualMidRoundLabel.getComputerWinLabel().setText("0");
+            manualMidRoundLabel.getPlayerWinLabel().setText("0");
+            standardMidRoundLabel.getComputerWinLabel().setText("0");
+            standardMidRoundLabel.getPlayerWinLabel().setText("0");
 
         }
         if (start == mainMenuLabel){
