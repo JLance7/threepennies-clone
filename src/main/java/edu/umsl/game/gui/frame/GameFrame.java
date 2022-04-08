@@ -297,6 +297,7 @@ public  class GameFrame extends JFrame implements ActionListener
             timer.start();
         }
 
+        //TODO use this ifelse to switch to end screen
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
