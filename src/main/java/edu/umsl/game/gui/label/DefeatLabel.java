@@ -3,19 +3,19 @@ package edu.umsl.game.gui.label;
 import javax.swing.*;
 import java.awt.*;
 
-public class VictoryLabel extends JLabel
+public class DefeatLabel extends JLabel
 {
     //declare buttons outside of constructor for use in GameFrame
     private final JButton btnMenu = new JButton();
 
     //use default constructor to create instance of the main menu with standard settings
-    public VictoryLabel()
+    public DefeatLabel()
     {
         //set up background image of MainMenuLabel
         ImageIcon image = null;
         try{
             //TODO Add asset to resources
-            image = new ImageIcon("assets/images/victoryDraft.png");
+            image = new ImageIcon("assets/images/defeatDraft.png");
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ public class VictoryLabel extends JLabel
         //set border for buttons to make them more visually appealing
         btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
         //set background color of buttons
-        btnMenu.setBackground(new Color(50, 200, 255));
+        btnMenu.setBackground(new Color(197, 0, 0));
         //remove possible focus from buttons to remove selection box around buttons
         btnMenu.setFocusable(false);
         //set bounds for the buttons, also giving their location on the main menu label
