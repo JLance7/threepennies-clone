@@ -151,9 +151,9 @@ public class Controller {
     }
 
     public String checkTotalWins(){
-        if (playerWins == 10)
+        if (playerWins == 6)
             return "player";
-        else if (computerWins == 10)
+        else if (computerWins == 6)
             return "computer";
         else
             return "";

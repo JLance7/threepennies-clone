@@ -28,6 +28,8 @@ public  class GameFrame extends JFrame implements ActionListener
     SequenceLabel manualSequenceLabel;
     MidRoundLabel manualMidRoundLabel;
     MidRoundLabel standardMidRoundLabel;
+    VictoryLabel victoryLabel;
+    DefeatLabel defeatLabel;
     Timer timer;
 
 
@@ -72,6 +74,12 @@ public  class GameFrame extends JFrame implements ActionListener
         manualSequenceLabel = new SequenceLabel();
         this.add(manualSequenceLabel);
 
+        victoryLabel = new VictoryLabel();
+        this.add(victoryLabel);
+
+        defeatLabel = new DefeatLabel();
+        this.add(defeatLabel);
+
         String backgroundLocation = "images/manual.png";
         String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
         "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
@@ -100,6 +108,8 @@ public  class GameFrame extends JFrame implements ActionListener
         standardPlayLabel.setVisible(false);
         standardMidRoundLabel.setVisible(false);
         manualMidRoundLabel.setVisible(false);
+        victoryLabel.setVisible(false);
+        defeatLabel.setVisible(false);
 
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
@@ -146,7 +156,11 @@ public  class GameFrame extends JFrame implements ActionListener
         standardMidRoundLabel.getBtnMenu().addActionListener(e -> changeLabel(standardMidRoundLabel, mainMenuLabel));
         standardMidRoundLabel.getBtnContinue().addActionListener(e -> changeLabel(standardMidRoundLabel, standardPlayLabel));
 
-        //win/lose screen
+        //victory screen
+        victoryLabel.getBtnMenu().addActionListener(e -> changeLabel(victoryLabel, mainMenuLabel));
+
+        //defeat screen
+        defeatLabel.getBtnMenu().addActionListener(e -> changeLabel(defeatLabel, mainMenuLabel));
 
     }
 
@@ -300,11 +314,9 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(manualPlayLabel, mainMenuLabel);
-            manualMidRoundLabel.setVisible(false);
+            changeLabel(manualPlayLabel, victoryLabel);
         } else if (totalWins == "computer"){
-            changeLabel(manualPlayLabel, mainMenuLabel);
-            manualMidRoundLabel.setVisible(false);
+            changeLabel(manualPlayLabel, defeatLabel);
         }
     }
 
@@ -426,11 +438,9 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(standardPlayLabel, mainMenuLabel);
-            standardMidRoundLabel.setVisible(false);
+            changeLabel(standardPlayLabel, victoryLabel);
         } else if (totalWins == "computer"){
-            changeLabel(standardPlayLabel, mainMenuLabel);
-            standardMidRoundLabel.setVisible(false);
+            changeLabel(standardPlayLabel, defeatLabel);
         }
 
         if (win == "")
