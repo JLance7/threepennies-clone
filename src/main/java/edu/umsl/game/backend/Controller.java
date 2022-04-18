@@ -97,21 +97,29 @@ public class Controller {
                     }
                 } else{
                     playerIndex = 0;
+                    lastPlayerIndex = playerIndex;
+                    if (ribbonText.charAt(playerIndex) == userSequence.charAt(playerIndex)){
+                        playerIndex++;
+                        lastPlayerIndex = playerIndex;
+                    }
                 }
-            }
-            else {
+            } else{
                 playerIndex = 0;
-                //check each letter index if it is the first char in sequence that the next 2 characters contain the next 2 values
-                for (int i = 0; i < ribbonText.length(); i++) {
-                    for (int j = i; j < ribbonText.length(); j++) {
-                        if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)) {
+                for (int i=0; i<ribbonText.length() - 2; i++){
+                    for (int j = i; j< i + 3; j++){
+                        if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)){
                             playerIndex++;
                             lastPlayerIndex = playerIndex;
                             if (playerIndex == 3){
                                 return true;
                             }
-                        } else {
+                        } else{
                             playerIndex = 0;
+                            lastPlayerIndex = playerIndex;
+                            if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)){
+                                playerIndex++;
+                                lastPlayerIndex = playerIndex;
+                            }
                         }
                     }
                     playerIndex = 0;
@@ -127,11 +135,16 @@ public class Controller {
                     }
                 } else{
                     computerIndex = 0;
+                    lastComputerIndex = computerIndex;
+                    if (ribbonText.charAt(computerIndex) == computerSequence.charAt(computerIndex)){
+                        computerIndex++;
+                        lastComputerIndex = computerIndex;
+                    }
                 }
             } else{
                 computerIndex = 0;
-                for (int i=0; i<ribbonText.length(); i++){
-                    for (int j = i; j< ribbonText.length(); j++){
+                for (int i=0; i<ribbonText.length() - 2; i++){
+                    for (int j = i; j< i + 3; j++){
                         if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
                             computerIndex++;
                             lastComputerIndex = computerIndex;
@@ -140,6 +153,12 @@ public class Controller {
                             }
                         } else{
                             computerIndex = 0;
+                            lastComputerIndex = computerIndex;
+                            if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
+                                computerIndex++;
+                                lastComputerIndex = computerIndex;
+                            }
+
                         }
                     }
                     computerIndex = 0;
