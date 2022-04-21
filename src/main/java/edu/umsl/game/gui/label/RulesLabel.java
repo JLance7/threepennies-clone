@@ -13,24 +13,29 @@ public class RulesLabel extends JLabel
     public RulesLabel()
     {
         //set up background image of RulesLabel
-        ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource("images/rulesDraft.png"));
+        ImageIcon image = null;
+        try{
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/how_to_playv2.png"));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
-        //Set text value of button
-        btnMenu.setText("MENU");
-        //set font and size for button text
-        btnMenu.setFont(new Font("Minerva", Font.PLAIN, 30));
-        //set text color of button
-        btnMenu.setForeground(Color.BLACK);
-        //set border for button to make it more visually appealing
-        btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
-        //set background color of button
-        btnMenu.setBackground(new Color(255, 0, 0));
-        //remove possible focus from button to remove selection box around button
+        //set both images for buttons
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/rulesMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/rulesMenuBtnPressed.png"));
+
+        //set attributes for button images
+        btnMenu.setIcon(menuImage);
+        btnMenu.setRolloverIcon(menuImagePressed);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setBorderPainted(false);
+        //remove focusability of button
         btnMenu.setFocusable(false);
         //set bounds for the button, also giving its location on the rules label
-        btnMenu.setBounds(530, 615, 200, 55);
+        btnMenu.setBounds(1025, 550, 200, 55);
+
         //add button to the rules label
         this.add(btnMenu);
     }

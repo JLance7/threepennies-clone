@@ -16,28 +16,29 @@ public class ExampleLabel extends JLabel
         //set up background image of ExampleLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/exampleDraft.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/examplev2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
-
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
-        //Set text value of button
-        btnMenu.setText("MENU");
-        //set font and size for button text
-        btnMenu.setFont(new Font("Minerva", Font.PLAIN, 50));
-        //set text color of button
-        btnMenu.setForeground(Color.BLACK);
-        //set border for button to make it more visually appealing
-        btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
-        //set background color of button
-        btnMenu.setBackground(new Color(80, 156, 190));
+        //set both images for buttons
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/exampleMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/exampleMenuBtnPressed.png"));
+
+        //set attributes for button images
+        btnMenu.setIcon(menuImage);
+        btnMenu.setRolloverIcon(menuImagePressed);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setBorderPainted(false);
+
+
+
         //remove possible focus from button to remove selection box around button
         btnMenu.setFocusable(false);
         //set bounds for the button, also giving its location on the example label
-        btnMenu.setBounds(880, 475, 300, 100);
+        btnMenu.setBounds(850, 475, 250, 75);
         //add button to the example label
         this.add(btnMenu);
 

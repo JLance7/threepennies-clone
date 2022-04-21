@@ -99,12 +99,17 @@ public abstract class PlayLabel extends JLabel  {
                 String fileName = "sounds/buttonClick.wav";
                 music = new MusicPlayer();
                 music.playMusic(fileName, false);
-                JOptionPane dialog = new JOptionPane();
-                dialog.setFocusable(false);
-                dialog.showMessageDialog(null,
-                        howToPlay,
-                        "How to Play",
-                        JOptionPane.PLAIN_MESSAGE);
+
+                JLabel text = new JLabel(howToPlay);
+                JOptionPane optionPane = new JOptionPane(text, JOptionPane.PLAIN_MESSAGE)
+                {
+                    @Override
+                    public void selectInitialValue()
+                    {
+                        text.requestFocus();
+                    }
+                };
+                optionPane.createDialog(null, "How to Play").setVisible(true);
             }
         });
         this.add(explanation);
@@ -127,5 +132,16 @@ public abstract class PlayLabel extends JLabel  {
     public JLabel getPlayerChecks() { return playerChecks; }
 
     public JLabel getComputerChecks() { return computerChecks; }
+
+    private static void recursiveUnfocusButtons(Component component) {
+        if (component instanceof JButton) {
+            component.setFocusable(false);
+            return;
+        } else if (component instanceof Container) {
+            for (Component c : ((Container) component).getComponents()) {
+                recursiveUnfocusButtons(c);
+            }
+        }
+    }
 
 }

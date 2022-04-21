@@ -45,14 +45,14 @@ public  class GameFrame extends JFrame implements ActionListener
         this.setTitle("Three Pennies");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        this.setSize(1280, 720);
+        this.setSize(1600, 900);
         this.setLayout(null);
 
         //set border icon for game
         //changed images location format so that they load when jar is created
         ImageIcon icon = null;
         try{
-            icon = new ImageIcon(getClass().getClassLoader().getResource("images/gameIcon.png"));
+            icon = new ImageIcon(getClass().getClassLoader().getResource("images/iconredo.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -111,6 +111,7 @@ public  class GameFrame extends JFrame implements ActionListener
         victoryLabel.setVisible(false);
         defeatLabel.setVisible(false);
 
+
         //set visibility to true at end to avoid potential conflicts
         this.setVisible(true);
         //center frame
@@ -162,6 +163,9 @@ public  class GameFrame extends JFrame implements ActionListener
         //defeat screen
         defeatLabel.getBtnMenu().addActionListener(e -> changeLabel(defeatLabel, mainMenuLabel));
 
+        //setup background label
+        BackgroundLabel backgroundLabel = new BackgroundLabel();
+        this.add(backgroundLabel);
     }
 
     //function to transfer visibility from one label to another

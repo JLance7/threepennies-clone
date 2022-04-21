@@ -11,11 +11,10 @@ public class VictoryLabel extends JLabel
     //use default constructor to create instance of the main menu with standard settings
     public VictoryLabel()
     {
-        //set up background image of MainMenuLabel
+        //set up background image of VictoryDefeat
         ImageIcon image = null;
         try{
-            //TODO Add asset to resources
-            image = new ImageIcon("assets/images/victoryDraft.png");
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/VictoryDraft.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
