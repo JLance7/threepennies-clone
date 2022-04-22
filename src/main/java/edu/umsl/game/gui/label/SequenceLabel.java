@@ -27,68 +27,63 @@ public class SequenceLabel extends JLabel
         //set up background image of ExampleLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/enterSequenceDraft.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/SequenceLabelImages/sequencev2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
-
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
+
+        //add all images for buttons
+        ImageIcon submitImage = new ImageIcon(getClass().getClassLoader().getResource("images/SequenceLabelImages/submitBtn.png"));
+        ImageIcon flipImage = new ImageIcon(getClass().getClassLoader().getResource("images/SequenceLabelImages/sequenceFlipBtn.png"));
+        //add depressed images for buttons
+        ImageIcon submitImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/SequenceLabelImages/submitBtnPressed.png"));
+        ImageIcon flipImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/SequenceLabelImages/sequenceFlipBtnPressed.png"));
+
+        //set attributes for button images
+        btnFlip1.setIcon(flipImage);
+        btnFlip1.setRolloverIcon(flipImagePressed);
+        btnFlip1.setContentAreaFilled(false);
+        btnFlip1.setBorderPainted(false);
+        btnFlip2.setIcon(flipImage);
+        btnFlip2.setRolloverIcon(flipImagePressed);
+        btnFlip2.setContentAreaFilled(false);
+        btnFlip2.setBorderPainted(false);
+        btnFlip3.setIcon(flipImage);
+        btnFlip3.setRolloverIcon(flipImagePressed);
+        btnFlip3.setContentAreaFilled(false);
+        btnFlip3.setBorderPainted(false);
+        btnSubmit.setIcon(submitImage);
+        btnSubmit.setRolloverIcon(submitImagePressed);
+        btnSubmit.setContentAreaFilled(false);
+        btnSubmit.setBorderPainted(false);
 
         //Set text value of buttons and labels
-        btnSubmit.setText("Submit");
-        btnFlip1.setText("FLIP");
-        btnFlip2.setText("FLIP");
-        btnFlip3.setText("FLIP");
-
         lblSequence1.setText("H");
         lblSequence2.setText("H");
         lblSequence3.setText("H");
         //set font and size for button and label text
-        btnSubmit.setFont(new Font("Minerva", Font.PLAIN, 50));
-        btnFlip1.setFont(new Font("Minerva", Font.PLAIN, 30));
-        btnFlip2.setFont(new Font("Minerva", Font.PLAIN, 30));
-        btnFlip3.setFont(new Font("Minerva", Font.PLAIN, 30));
-
-        lblSequence1.setFont(new Font("Minerva", Font.PLAIN, 150));
-        lblSequence2.setFont(new Font("Minerva", Font.PLAIN, 150));
-        lblSequence3.setFont(new Font("Minerva", Font.PLAIN, 150));
+        lblSequence1.setFont(new Font("Orbitron", Font.PLAIN, 150));
+        lblSequence2.setFont(new Font("Orbitron", Font.PLAIN, 150));
+        lblSequence3.setFont(new Font("Orbitron", Font.PLAIN, 150));
         //set text color of buttons and labels
-        btnSubmit.setForeground(Color.BLACK);
-        btnFlip1.setForeground(Color.BLACK);
-        btnFlip2.setForeground(Color.BLACK);
-        btnFlip3.setForeground(Color.BLACK);
-
         lblSequence1.setForeground(Color.BLACK);
         lblSequence2.setForeground(Color.BLACK);
         lblSequence3.setForeground(Color.BLACK);
-        //set border for buttons to make them more visually appealing
-        btnSubmit.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnFlip1.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnFlip2.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnFlip3.setBorder(BorderFactory.createRaisedBevelBorder());
-
-        //set background color of buttons
-        btnSubmit.setBackground(new Color(230, 0, 0));
-        btnFlip1.setBackground(new Color(230, 100, 100));
-        btnFlip2.setBackground(new Color(230, 100, 100));
-        btnFlip3.setBackground(new Color(230, 100, 100));
-
         //remove possible focus from buttons to remove selection box around buttons
         btnSubmit.setFocusable(false);
         btnFlip1.setFocusable(false);
         btnFlip2.setFocusable(false);
         btnFlip3.setFocusable(false);
-
         //set bounds for the buttons and labels, also giving its location on the sequence label
-        btnSubmit.setBounds(540, 570, 200, 60);
-        btnFlip1.setBounds(433, 440, 90, 40);
-        btnFlip2.setBounds(593, 440, 90, 40);
-        btnFlip3.setBounds(753, 440, 90, 40);
-
-        lblSequence1.setBounds(443, 270, 200, 120);
-        lblSequence2.setBounds(603, 270, 200, 120);
-        lblSequence3.setBounds(763, 270, 200, 120);
+        btnSubmit.setBounds(790, 500, 200, 60);
+        btnFlip1.setBounds(645, 423, 90, 40);
+        btnFlip2.setBounds(845, 423, 90, 40);
+        btnFlip3.setBounds(1040, 423, 90, 40);
+        lblSequence1.setBounds(631, 245, 200, 120);
+        lblSequence2.setBounds(830, 245, 200, 120);
+        lblSequence3.setBounds(1025, 245, 200, 120);
         //add buttons and labels to the example label
         this.add(btnSubmit);
         this.add(btnFlip1);

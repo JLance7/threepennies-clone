@@ -2,7 +2,6 @@ package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
 import javax.swing.*;
-import java.awt.*;
 
 //extend JPanel for use of java super class
 public class MainMenuLabel extends JLabel
@@ -20,7 +19,7 @@ public class MainMenuLabel extends JLabel
         //set up background image of MainMenuLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/main_menu_v2.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/main_menu_v2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -29,15 +28,15 @@ public class MainMenuLabel extends JLabel
         this.setBounds(150, 69, 1280, 720);
 
         //add all images for buttons
-        ImageIcon stdImage = new ImageIcon(getClass().getClassLoader().getResource("images/stdPlayBtn.png"));
-        ImageIcon manImage = new ImageIcon(getClass().getClassLoader().getResource("images/manPlayBtn.png"));
-        ImageIcon rulesImage = new ImageIcon(getClass().getClassLoader().getResource("images/rulesBtn.png"));
-        ImageIcon exampleImage = new ImageIcon(getClass().getClassLoader().getResource("images/examplePlayBtn.png"));
+        ImageIcon stdImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/stdPlayBtn.png"));
+        ImageIcon manImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtn.png"));
+        ImageIcon rulesImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtn.png"));
+        ImageIcon exampleImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtn.png"));
         //add depressed images for buttons
-        ImageIcon stdImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/stdPlayBtnPressed.png"));
-        ImageIcon manImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/manPlayBtnPressed.png"));
-        ImageIcon rulesImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/rulesBtnPressed.png"));
-        ImageIcon exampleImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/examplePlayBtnPressed.png"));
+        ImageIcon stdImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/stdPlayBtnPressed.png"));
+        ImageIcon manImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtnPressed.png"));
+        ImageIcon rulesImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtnPressed.png"));
+        ImageIcon exampleImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtnPressed.png"));
 
         //set buttons images
         btnStandard.setIcon(stdImage);

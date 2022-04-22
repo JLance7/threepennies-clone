@@ -2,7 +2,6 @@ package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
 import javax.swing.*;
-import java.awt.*;
 
 public class RulesLabel extends JLabel
 {
@@ -15,7 +14,7 @@ public class RulesLabel extends JLabel
         //set up background image of RulesLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/how_to_playv2.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/RulesLabelImages/how_to_playv2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -23,8 +22,8 @@ public class RulesLabel extends JLabel
         this.setBounds(150, 69, 1280, 720);
 
         //set both images for buttons
-        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/rulesMenuBtn.png"));
-        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/rulesMenuBtnPressed.png"));
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/RulesLabelImages/rulesMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/RulesLabelImages/rulesMenuBtnPressed.png"));
 
         //set attributes for button images
         btnMenu.setIcon(menuImage);

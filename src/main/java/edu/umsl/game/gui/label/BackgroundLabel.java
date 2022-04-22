@@ -9,7 +9,7 @@ public class BackgroundLabel extends JLabel
         //set up background label for frame
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/wallpaper.gif"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/BackgroundLabelImages/wallpaper.gif"));
         } catch (Exception e){
             e.printStackTrace();
         }

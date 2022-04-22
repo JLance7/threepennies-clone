@@ -2,7 +2,6 @@ package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
 import javax.swing.*;
-import java.awt.*;
 
 //extend JPanel for use of java super class
 public class ExampleLabel extends JLabel
@@ -16,7 +15,7 @@ public class ExampleLabel extends JLabel
         //set up background image of ExampleLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/examplev2.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/ExampleLabelImages/examplev2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -24,8 +23,8 @@ public class ExampleLabel extends JLabel
         this.setBounds(150, 69, 1280, 720);
 
         //set both images for buttons
-        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/exampleMenuBtn.png"));
-        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/exampleMenuBtnPressed.png"));
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/ExampleLabelImages/exampleMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/ExampleLabelImages/exampleMenuBtnPressed.png"));
 
         //set attributes for button images
         btnMenu.setIcon(menuImage);
