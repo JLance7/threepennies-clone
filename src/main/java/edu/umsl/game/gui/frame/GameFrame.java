@@ -34,6 +34,7 @@ public  class GameFrame extends JFrame implements ActionListener
     Timer timer;
 
 
+
     //default constructor to prepare instance of the GameFrame with standard arrangement
     public GameFrame()
     {
@@ -86,13 +87,13 @@ public  class GameFrame extends JFrame implements ActionListener
 
         String backgroundLocation = "images/PlayLabelImages/ManualLabelImages/manualv2.png";
         String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
+        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
         manualPlayLabel = new ManualPlayLabel(backgroundLocation, howToString);
         this.add(manualPlayLabel);
 
         backgroundLocation = "images/PlayLabelImages/StandardLabelImages/Standardv2.png";
         howToString = "Flip the coin for to get a random flip of heads or tails" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
+        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
         standardPlayLabel = new StandardPlayLabel(backgroundLocation, howToString);
         this.add(standardPlayLabel);
 
@@ -216,6 +217,10 @@ public  class GameFrame extends JFrame implements ActionListener
             manualSequenceLabel.getLblSequence1().setText("H");
             manualSequenceLabel.getLblSequence2().setText("H");
             manualSequenceLabel.getLblSequence3().setText("H");
+            manualPlayLabel.getComputerChecks().setText("");
+            manualPlayLabel.getPlayerChecks().setText("");
+            standardPlayLabel.getComputerChecks().setText("");
+            standardPlayLabel.getPlayerChecks().setText("");
         }
         if (start == manualMidRoundLabel ){
             //add action listener back after winning a round
@@ -502,5 +507,6 @@ public  class GameFrame extends JFrame implements ActionListener
                 interruptedException.printStackTrace();
             }
         }
+
     }
 }

@@ -30,6 +30,8 @@ package edu.umsl.game;
 //import for access to GameFrame
 import edu.umsl.game.gui.frame.GameFrame;
 
+import javax.swing.*;
+
 public class Main
 {
     public static void main(String[] args)

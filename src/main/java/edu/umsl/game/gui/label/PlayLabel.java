@@ -19,6 +19,7 @@ public abstract class PlayLabel extends JLabel  {
     JLabel playerChecks = new JLabel();
     JLabel computerChecks = new JLabel();
     JButton explanation = new JButton();
+    JLabel placeholder = new JLabel();
 
 
     public PlayLabel(String backgroundFile, String howToPlay){
@@ -102,17 +103,18 @@ public abstract class PlayLabel extends JLabel  {
                 String fileName = "sounds/buttonClick.wav";
                 music = new MusicPlayer();
                 music.playMusic(fileName, false);
+                //placeholder.setText(howToPlay);
+                placeholder.setVisible(false);
 
-                JLabel text = new JLabel(howToPlay);
-                JOptionPane optionPane = new JOptionPane(text, JOptionPane.PLAIN_MESSAGE)
+                //JOptionPane(Object message, int messageType, int optionType, Icon icon, Object[] options, Object initialValue)
+                JOptionPane pane = new JOptionPane(howToPlay, JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE)
                 {
                     @Override
-                    public void selectInitialValue()
-                    {
-                        text.requestFocus();
+                    public void selectInitialValue() {
+                        placeholder.requestFocusInWindow();
                     }
                 };
-                optionPane.createDialog(null, "How to Play").setVisible(true);
+                pane.createDialog(null, "How to Play").setVisible(true);
             }
         });
         this.add(explanation);
