@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="edu.umsl.game.backend.AssetTest" time="0.432" errors="0" skipped="0">
+<testsuite tests="43" failures="0" name="edu.umsl.game.backend.AssetTest" time="0.422" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2020.3.4"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -44,7 +44,7 @@
     <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.1\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="15"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.3.4 test"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.3.4 install"/>
     <property name="java.home" value="C:\Users\joshu\.jdks\openjdk-15.0.2"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -59,12 +59,47 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMainMenuBackground" time="0.119"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManualPlayBackground" time="0.093"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testGameIcon" time="0.044"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMidRoundBackground" time="0.082"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExamplePageBackground" time="0.017"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesPageBackground" time="0.022"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testReadMeThumbnail" time="0.041"/>
-  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequencePageBackground" time="0.014"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManPlayBtnPressed" time="0.069"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testStandardV2" time="0.043"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesMenuBtn" time="0.003"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMidroundV2" time="0.038"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testContinueBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testStdPlayBtn" time="0.004"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExampleMenuBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExamplePlayBtn" time="0.002"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testStdPlayBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testAboutUs" time="0.021"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testTailsToHeads" time="0.007"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExamplePlayBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testHeads" time="0.022"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testTails" time="0.02"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testContinueBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testHowToPlayV2" time="0.026"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequenceV2" time="0.017"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testMainMenuV2" time="0.02"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSubmitBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesMenuBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testPlayMenuBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManPlayBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExampleMenuBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testPlayHowToBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testIconRedo" time="0.002"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testPlayHowToBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testPlayMenuBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testLearnMoreBtn" time="0"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testExampleV2" time="0.016"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testAboutUsBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testLearnMoreBtnPressed" time="0"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testManualV2" time="0.015"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testAboutUsBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSubmitBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testDefeatV2" time="0.018"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequenceFlipBtnPressed" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testRulesBtn" time="0.001"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testVictoryV2" time="0.02"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testHeadsToTails" time="0.005"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testReadMeThumbnail" time="0.028"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testSequenceFlipBtn" time="0"/>
+  <testcase classname="edu.umsl.game.backend.AssetTest" name="testWallpaper" time="0.007"/>
 </testsuite>
