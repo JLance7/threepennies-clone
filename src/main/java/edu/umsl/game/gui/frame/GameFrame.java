@@ -30,6 +30,7 @@ public  class GameFrame extends JFrame implements ActionListener
     MidRoundLabel standardMidRoundLabel;
     VictoryLabel victoryLabel;
     DefeatLabel defeatLabel;
+    AboutUsLabel aboutUsLabel;
     Timer timer;
 
 
@@ -80,6 +81,9 @@ public  class GameFrame extends JFrame implements ActionListener
         defeatLabel = new DefeatLabel();
         this.add(defeatLabel);
 
+        aboutUsLabel = new AboutUsLabel();
+        this.add(aboutUsLabel);
+
         String backgroundLocation = "images/PlayLabelImages/ManualLabelImages/manualv2.png";
         String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
         "\nThe first person to get a complete sequence of 3 that matches their own sequence wins that round. First to 10 wins the game!";
@@ -110,6 +114,7 @@ public  class GameFrame extends JFrame implements ActionListener
         manualMidRoundLabel.setVisible(false);
         victoryLabel.setVisible(false);
         defeatLabel.setVisible(false);
+        aboutUsLabel.setVisible(false);
 
 
         //set visibility to true at end to avoid potential conflicts
@@ -127,6 +132,7 @@ public  class GameFrame extends JFrame implements ActionListener
         mainMenuLabel.getBtnStandard().addActionListener(e -> changeLabel(mainMenuLabel, standardSequenceLabel));
         mainMenuLabel.getBtnManual().addActionListener(e -> changeLabel(mainMenuLabel, manualSequenceLabel));
         mainMenuLabel.getBtnRules().addActionListener(e -> changeLabel(mainMenuLabel, rulesLabel));
+        mainMenuLabel.getBtnAbout().addActionListener(e -> changeLabel(mainMenuLabel, aboutUsLabel));
 
         //example label (How it works)
         exampleLabel.getBtnMenu().addActionListener(e -> changeLabel(exampleLabel, mainMenuLabel));
@@ -162,6 +168,9 @@ public  class GameFrame extends JFrame implements ActionListener
 
         //defeat screen
         defeatLabel.getBtnMenu().addActionListener(e -> changeLabel(defeatLabel, mainMenuLabel));
+
+        //about us screen
+        aboutUsLabel.getBtnMenu().addActionListener(e -> changeLabel(aboutUsLabel, mainMenuLabel));
 
         //setup background label
         BackgroundLabel backgroundLabel = new BackgroundLabel();

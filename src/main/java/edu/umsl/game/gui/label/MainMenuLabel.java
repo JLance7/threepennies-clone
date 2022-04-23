@@ -11,6 +11,7 @@ public class MainMenuLabel extends JLabel
     private final JButton btnManual = new JButton();
     private final JButton btnExample = new JButton();
     private final JButton btnRules = new JButton();
+    private final JButton btnAbout = new JButton();
 
     //use default constructor to create instance of the main menu with standard settings
     public MainMenuLabel()
@@ -32,27 +33,32 @@ public class MainMenuLabel extends JLabel
         ImageIcon manImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtn.png"));
         ImageIcon rulesImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtn.png"));
         ImageIcon exampleImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtn.png"));
+        ImageIcon aboutImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/aboutUsBtn.png"));
         //add depressed images for buttons
         ImageIcon stdImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/stdPlayBtnPressed.png"));
         ImageIcon manImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtnPressed.png"));
         ImageIcon rulesImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtnPressed.png"));
         ImageIcon exampleImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtnPressed.png"));
+        ImageIcon aboutImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/aboutUsBtnPressed.png"));
 
         //set buttons images
         btnStandard.setIcon(stdImage);
         btnManual.setIcon(manImage);
         btnRules.setIcon(rulesImage);
         btnExample.setIcon(exampleImage);
+        btnAbout.setIcon(aboutImage);
         //remove possible focus from buttons to remove selection box around buttons
         btnStandard.setFocusable(false);
         btnManual.setFocusable(false);
         btnExample.setFocusable(false);
         btnRules.setFocusable(false);
+        btnAbout.setFocusable(false);
         //set bounds for the buttons, also giving their location on the main menu label
         btnStandard.setBounds(45, 300, 375, 125);
         btnManual.setBounds(45, 494, 375, 125);
         btnExample.setBounds(600, 494, 375, 125);
         btnRules.setBounds(600, 300, 375, 125);
+        btnAbout.setBounds(1030, 560, 180, 50);
         //setup button image attributes
         btnStandard.setBorderPainted(false);
         btnStandard.setContentAreaFilled(false);
@@ -62,16 +68,20 @@ public class MainMenuLabel extends JLabel
         btnRules.setContentAreaFilled(false);
         btnExample.setBorderPainted(false);
         btnExample.setContentAreaFilled(false);
+        btnAbout.setBorderPainted(false);
+        btnAbout.setContentAreaFilled(false);
         //add rollover to all buttons
         btnStandard.setRolloverIcon(stdImagePressed);
         btnManual.setRolloverIcon(manImagePressed);
         btnRules.setRolloverIcon(rulesImagePressed);
         btnExample.setRolloverIcon(exampleImagePressed);
+        btnAbout.setRolloverIcon(aboutImagePressed);
         //add buttons to the main menu label
         this.add(btnStandard);
         this.add(btnManual);
         this.add(btnExample);
         this.add(btnRules);
+        this.add(btnAbout);
     }
     //getters for all buttons to be used in GameFrame
 
@@ -90,5 +100,9 @@ public class MainMenuLabel extends JLabel
     public JButton getBtnRules()
     {
         return btnRules;
+    }
+    public JButton getBtnAbout()
+    {
+        return btnAbout;
     }
 }
