@@ -11,32 +11,26 @@ public class DefeatLabel extends JLabel
     //use default constructor to create instance of the main menu with standard settings
     public DefeatLabel()
     {
-        //set up background image of MainMenuLabel
+        //set up background image of VictoryDefeat
         ImageIcon image = null;
         try{
-            //TODO Add asset to resources
-            image = new ImageIcon("assets/images/defeatDraft.png");
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/DefeatLabelImages/Defeatv2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
-
         this.setIcon(image);
         this.setBounds(150, 69, 1280, 720);
 
-        //Set text value of buttons
-        btnMenu.setText("MENU");
-        //set font and size for button text
-        btnMenu.setFont(new Font("Minerva", Font.PLAIN, 80));
-        //set text color of buttons
-        btnMenu.setForeground(Color.BLACK);
-        //set border for buttons to make them more visually appealing
-        btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
-        //set background color of buttons
-        btnMenu.setBackground(new Color(197, 0, 0));
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtnPressed.png"));
+        btnMenu.setIcon(menuImage);
+        btnMenu.setRolloverIcon(menuImagePressed);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setBorderPainted(false);
         //remove possible focus from buttons to remove selection box around buttons
         btnMenu.setFocusable(false);
         //set bounds for the buttons, also giving their location on the main menu label
-        btnMenu.setBounds(425, 515, 425, 125);
+        btnMenu.setBounds(850, 450, 300, 75);
         //add buttons to the main menu label
         this.add(btnMenu);
     }
