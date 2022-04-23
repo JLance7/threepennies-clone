@@ -57,7 +57,7 @@ public class Controller {
     public String coinFlipped(String coin){
         ribbonText = ribbonText + coin;
         //if ribbon is too long remove first char (unlikely)
-        if (ribbonText.length() == 46){
+        if (ribbonText.length() == 35){
             ribbonText = ribbonText.substring(1);
         }
 
