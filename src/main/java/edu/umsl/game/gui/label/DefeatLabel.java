@@ -21,7 +21,7 @@ public class DefeatLabel extends JLabel
         }
 
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
         //Set text value of buttons
         btnMenu.setText("MENU");

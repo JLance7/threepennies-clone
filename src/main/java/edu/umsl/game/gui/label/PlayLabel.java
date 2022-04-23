@@ -30,67 +30,70 @@ public abstract class PlayLabel extends JLabel  {
             e.printStackTrace();
         }
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
+        ImageIcon menuIcon = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtn.png"));
+        ImageIcon menuIconPressed = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtnPressed.png"));
+        btnMenu.setIcon(menuIcon);
+        btnMenu.setRolloverIcon(menuIconPressed);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setBorderPainted(false);
         btnMenu.setFocusable(false);
-        btnMenu.setFont(new Font("Minerva", Font.PLAIN, 20));
-        btnMenu.setForeground(Color.black);
-        btnMenu.setBackground(new Color(230, 100, 100));
-        btnMenu.setBounds(0, 0, 70, 40);
-        btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
+        btnMenu.setBounds(910, 420, 300, 75);
         this.add(btnMenu);
 
-        Font sequenceFont = new Font("Minerva", Font.PLAIN, 65);
+        Font sequenceFont = new Font("Orbitron", Font.PLAIN, 65);
         playerSequenceLabel.setFont(sequenceFont);
-        playerSequenceLabel.setForeground(Color.black);
-        playerSequenceLabel.setBounds(90, 15, 200, 200);
+        playerSequenceLabel.setForeground(Color.white);
+        playerSequenceLabel.setBounds(90, 90, 200, 200);
         this.add(playerSequenceLabel);
 
         computerSequenceLabel.setFont(sequenceFont);
-        computerSequenceLabel.setForeground(Color.black);
-        computerSequenceLabel.setBounds(1085, 15, 200, 200);
+        computerSequenceLabel.setForeground(Color.white);
+        computerSequenceLabel.setBounds(1015, 90, 200, 200);
         this.add(computerSequenceLabel);
 
-        roundsLabel.setFont(new Font("Minerva", Font.PLAIN, 48));
-        roundsLabel.setForeground(Color.black);
-        roundsLabel.setBounds(692, 135, 100, 100);
+        roundsLabel.setFont(new Font("Orbitron", Font.PLAIN, 36));
+        roundsLabel.setForeground(Color.white);
+        roundsLabel.setBounds(700, 123, 100, 100);
         this.add(roundsLabel);
 
-        ribbonHistory.setFont(new Font("Minerva", Font.PLAIN, 48));
-        ribbonHistory.setForeground(Color.black);
-        ribbonHistory.setBounds(-5, 590, 1280, 100);
+        ribbonHistory.setFont(new Font("Orbitron", Font.PLAIN, 48));
+        ribbonHistory.setForeground(Color.white);
+        ribbonHistory.setBounds(-5, 552, 1280, 100);
         ribbonHistory.setHorizontalAlignment(JLabel.CENTER);
         this.add(ribbonHistory);
 
         playerWins.setText("Wins: ");
-        playerWins.setFont(new Font("Minerva", Font.PLAIN, 32));
-        playerWins.setForeground(Color.black);
-        playerWins.setBounds(30, 175, 200, 100);
+        playerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
+        playerWins.setForeground(Color.white);
+        playerWins.setBounds(60, 250, 200, 100);
         this.add(playerWins);
 
         computerWins.setText("Wins: ");
-        computerWins.setFont(new Font("Minerva", Font.PLAIN, 32));
-        computerWins.setForeground(Color.black);
-        computerWins.setBounds(1032, 175, 200, 100);
+        computerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
+        computerWins.setForeground(Color.white);
+        computerWins.setBounds(985, 250, 200, 100);
         this.add(computerWins);
 
-        playerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 40));
+        playerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 60));
         playerChecks.setForeground(Color.green);
-        playerChecks.setBounds(90, 87, 200, 200);
+        playerChecks.setBounds(102, 145, 200, 200);
         this.add(playerChecks);
 
-        computerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 40));
+        computerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 60));
         computerChecks.setForeground(Color.red);
-        computerChecks.setBounds(1085, 87, 200, 200);
+        computerChecks.setBounds(1024, 145, 200, 200);
         this.add(computerChecks);
 
-        explanation.setFont(new Font("Minerva", Font.PLAIN, 22));
-        explanation.setForeground(Color.black);
+        ImageIcon rulesIcon = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playHowToBtn.png"));
+        ImageIcon rulesIconPressed = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playHowToBtnPressed.png"));
+        explanation.setIcon(rulesIcon);
+        explanation.setRolloverIcon(rulesIconPressed);
+        explanation.setContentAreaFilled(false);
+        explanation.setBorderPainted(false);
         explanation.setFocusable(false);
-        explanation.setBackground(new Color(230, 100, 100));
-        explanation.setBounds(70, 420, 140, 70);
-        explanation.setBorder(BorderFactory.createRaisedBevelBorder());
-        explanation.setText("How to play");
+        explanation.setBounds(80, 420, 300, 75);
         explanation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

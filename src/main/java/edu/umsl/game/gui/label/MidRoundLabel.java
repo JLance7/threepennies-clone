@@ -22,7 +22,7 @@ public class MidRoundLabel extends JLabel {
         }
 
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
         //set attributes for player/computer win labels
         playerWinLabel.setText("0");
