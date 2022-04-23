@@ -2,7 +2,6 @@ package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
 import javax.swing.*;
-import java.awt.*;
 
 //extend JPanel for use of java super class
 public class MainMenuLabel extends JLabel
@@ -12,61 +11,77 @@ public class MainMenuLabel extends JLabel
     private final JButton btnManual = new JButton();
     private final JButton btnExample = new JButton();
     private final JButton btnRules = new JButton();
+    private final JButton btnAbout = new JButton();
 
     //use default constructor to create instance of the main menu with standard settings
     public MainMenuLabel()
     {
+
         //set up background image of MainMenuLabel
         ImageIcon image = null;
         try{
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuDraft.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/main_menu_v2.png"));
         } catch (Exception e){
             e.printStackTrace();
         }
 
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
-        //Set text value of buttons
-        btnStandard.setText("STANDARD PLAY");
-        btnManual.setText("MANUAL PLAY");
-        btnExample.setText("HOW IT WORKS");
-        btnRules.setText("HOW TO PLAY");
-        //set font and size for button text
-        btnStandard.setFont(new Font("Minerva", Font.PLAIN, 50));
-        btnManual.setFont(new Font("Minerva", Font.PLAIN, 50));
-        btnExample.setFont(new Font("Minerva", Font.PLAIN, 50));
-        btnRules.setFont(new Font("Minerva", Font.PLAIN, 50));
-        //set text color of buttons
-        btnStandard.setForeground(Color.BLACK);
-        btnManual.setForeground(Color.BLACK);
-        btnExample.setForeground(Color.BLACK);
-        btnRules.setForeground(Color.BLACK);
-        //set border for buttons to make them more visually appealing
-        btnStandard.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnManual.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnExample.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnRules.setBorder(BorderFactory.createRaisedBevelBorder());
-        //set background color of buttons
-        btnStandard.setBackground(new Color(200, 0, 0));
-        btnManual.setBackground(new Color(200, 0, 0));
-        btnExample.setBackground(new Color(200, 0, 0));
-        btnRules.setBackground(new Color(200, 0, 0));
+        //add all images for buttons
+        ImageIcon stdImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/stdPlayBtn.png"));
+        ImageIcon manImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtn.png"));
+        ImageIcon rulesImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtn.png"));
+        ImageIcon exampleImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtn.png"));
+        ImageIcon aboutImage = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/aboutUsBtn.png"));
+        //add depressed images for buttons
+        ImageIcon stdImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/stdPlayBtnPressed.png"));
+        ImageIcon manImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/manPlayBtnPressed.png"));
+        ImageIcon rulesImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/rulesBtnPressed.png"));
+        ImageIcon exampleImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/examplePlayBtnPressed.png"));
+        ImageIcon aboutImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MainMenuImages/aboutUsBtnPressed.png"));
+
+        //set buttons images
+        btnStandard.setIcon(stdImage);
+        btnManual.setIcon(manImage);
+        btnRules.setIcon(rulesImage);
+        btnExample.setIcon(exampleImage);
+        btnAbout.setIcon(aboutImage);
         //remove possible focus from buttons to remove selection box around buttons
         btnStandard.setFocusable(false);
         btnManual.setFocusable(false);
         btnExample.setFocusable(false);
         btnRules.setFocusable(false);
+        btnAbout.setFocusable(false);
         //set bounds for the buttons, also giving their location on the main menu label
-        btnStandard.setBounds(50, 300, 400, 100);
-        btnManual.setBounds(50, 425, 400, 100);
-        btnExample.setBounds(815, 425, 400, 100);
-        btnRules.setBounds(815, 300, 400, 100);
+        btnStandard.setBounds(45, 300, 375, 125);
+        btnManual.setBounds(45, 494, 375, 125);
+        btnExample.setBounds(600, 494, 375, 125);
+        btnRules.setBounds(600, 300, 375, 125);
+        btnAbout.setBounds(1030, 560, 180, 50);
+        //setup button image attributes
+        btnStandard.setBorderPainted(false);
+        btnStandard.setContentAreaFilled(false);
+        btnManual.setBorderPainted(false);
+        btnManual.setContentAreaFilled(false);
+        btnRules.setBorderPainted(false);
+        btnRules.setContentAreaFilled(false);
+        btnExample.setBorderPainted(false);
+        btnExample.setContentAreaFilled(false);
+        btnAbout.setBorderPainted(false);
+        btnAbout.setContentAreaFilled(false);
+        //add rollover to all buttons
+        btnStandard.setRolloverIcon(stdImagePressed);
+        btnManual.setRolloverIcon(manImagePressed);
+        btnRules.setRolloverIcon(rulesImagePressed);
+        btnExample.setRolloverIcon(exampleImagePressed);
+        btnAbout.setRolloverIcon(aboutImagePressed);
         //add buttons to the main menu label
         this.add(btnStandard);
         this.add(btnManual);
         this.add(btnExample);
         this.add(btnRules);
+        this.add(btnAbout);
     }
     //getters for all buttons to be used in GameFrame
 
@@ -85,5 +100,9 @@ public class MainMenuLabel extends JLabel
     public JButton getBtnRules()
     {
         return btnRules;
+    }
+    public JButton getBtnAbout()
+    {
+        return btnAbout;
     }
 }

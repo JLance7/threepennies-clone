@@ -23,7 +23,7 @@ public class ManualPlayLabel extends PlayLabel {
 
         //headsBtn.setIcon(headImg);
         headsBtn.setFocusable(false);
-        headsBtn.setBounds(415, 260, 200, 200);
+        headsBtn.setBounds(420, 240, 200, 200);
         headsBtn.setIcon(headScaledIcon);
         headsBtn.setBorderPainted(false);
         headsBtn.setContentAreaFilled(false);
@@ -33,7 +33,7 @@ public class ManualPlayLabel extends PlayLabel {
 
         tailsBtn.setFocusable(false);
         tailsBtn.setIcon(tailsScaledIcon);
-        tailsBtn.setBounds(665, 260, 200, 200);
+        tailsBtn.setBounds(670, 240, 200, 200);
         tailsBtn.setBorderPainted(false);
         tailsBtn.setContentAreaFilled(false);
         tailsBtn.setFocusPainted(false);

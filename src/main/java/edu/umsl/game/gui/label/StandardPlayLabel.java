@@ -29,7 +29,7 @@ public class StandardPlayLabel extends PlayLabel {
         flipButton.setFocusPainted(false);
         flipButton.setOpaque(false);
         flipButton.setBackground(new Color(39, 120, 232));
-        flipButton.setBounds(520, 260, 220, 220);
+        flipButton.setBounds(530, 220, 220, 220);
         this.add(flipButton);
     }
 

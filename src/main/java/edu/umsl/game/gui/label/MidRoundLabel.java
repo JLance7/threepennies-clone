@@ -16,50 +16,47 @@ public class MidRoundLabel extends JLabel {
         //set up background image of midround screen
         ImageIcon image = null;
         try {
-            image = new ImageIcon(getClass().getClassLoader().getResource("images/MidRound.png"));
+            image = new ImageIcon(getClass().getClassLoader().getResource("images/MidRoundLabelImages/midroundv2.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         this.setIcon(image);
-        this.setBounds(0, 0, 1280, 720);
+        this.setBounds(150, 69, 1280, 720);
 
         //set attributes for player/computer win labels
         playerWinLabel.setText("0");
         computerWinLabel.setText("0");
-        playerWinLabel.setFont(new Font("Minerva", Font.PLAIN, 80));
-        computerWinLabel.setFont(new Font("Minerva", Font.PLAIN, 80));
-        playerWinLabel.setForeground(Color.BLACK);
-        computerWinLabel.setForeground(Color.BLACK);
+        playerWinLabel.setFont(new Font("Orbitron", Font.PLAIN, 80));
+        computerWinLabel.setFont(new Font("Orbitron", Font.PLAIN, 80));
+        playerWinLabel.setForeground(Color.white);
+        computerWinLabel.setForeground(Color.white);
         playerWinLabel.setFocusable(false);
         computerWinLabel.setFocusable(false);
-        playerWinLabel.setBounds(540, 310, 100, 100);
-        computerWinLabel.setBounds(635, 310, 100, 100);
+        playerWinLabel.setBounds(260, 380, 100, 100);
+        computerWinLabel.setBounds(915, 380, 100, 100);
         playerWinLabel.setHorizontalAlignment(JLabel.CENTER);
         computerWinLabel.setHorizontalAlignment(JLabel.CENTER);
 
-
-        //Set text value of button
-        btnMenu.setText("MENU");
-        btnContinue.setText("CONTINUE");
-        //set font and size for button text
-        btnMenu.setFont(new Font("Minerva", Font.PLAIN, 50));
-        btnContinue.setFont(new Font("Minerva", Font.PLAIN, 50));
-        //set text color of button
-        btnMenu.setForeground(Color.BLACK);
-        btnContinue.setForeground(Color.BLACK);
-        //set border for button to make it more visually appealing
-        btnMenu.setBorder(BorderFactory.createRaisedBevelBorder());
-        btnContinue.setBorder(BorderFactory.createRaisedBevelBorder());
-        //set background color of button
-        btnMenu.setBackground(new Color(255, 178, 11));
-        btnContinue.setBackground(new Color(255, 178, 11));
+        //add button images and attributes
+        ImageIcon menuImage = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtn.png"));
+        ImageIcon menuImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/PlayLabelImages/playMenuBtnPressed.png"));
+        ImageIcon continueImage = new ImageIcon(getClass().getClassLoader().getResource("images/MidRoundLabelImages/continueBtn.png"));
+        ImageIcon continueImagePressed = new ImageIcon(getClass().getClassLoader().getResource("images/MidRoundLabelImages/continueBtnPressed.png"));
+        btnMenu.setIcon(menuImage);
+        btnMenu.setRolloverIcon(menuImagePressed);
+        btnMenu.setContentAreaFilled(false);
+        btnMenu.setBorderPainted(false);
+        btnContinue.setIcon(continueImage);
+        btnContinue.setRolloverIcon(continueImagePressed);
+        btnContinue.setContentAreaFilled(false);
+        btnContinue.setBorderPainted(false);
         //remove possible focus from button to remove selection box around button
         btnMenu.setFocusable(false);
         btnContinue.setFocusable(false);
         //set bounds for the button, also giving its location on the midround label
-        btnMenu.setBounds(302, 550, 275, 75);
-        btnContinue.setBounds(700, 550, 275, 75);
+        btnMenu.setBounds(302, 550, 300, 75);
+        btnContinue.setBounds(700, 550, 300, 75);
         //add buttons and labels to the midround label
         this.add(btnMenu);
         this.add(btnContinue);
