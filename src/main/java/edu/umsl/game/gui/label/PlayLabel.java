@@ -56,7 +56,7 @@ public abstract class PlayLabel extends JLabel  {
 
         roundsLabel.setFont(new Font("Orbitron", Font.PLAIN, 36));
         roundsLabel.setForeground(Color.white);
-        roundsLabel.setBounds(700, 123, 100, 100);
+        roundsLabel.setBounds(700, 115, 100, 100);
         this.add(roundsLabel);
 
         ribbonHistory.setFont(new Font("Orbitron", Font.PLAIN, 48));
@@ -68,13 +68,13 @@ public abstract class PlayLabel extends JLabel  {
         playerWins.setText("Wins: ");
         playerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
         playerWins.setForeground(Color.white);
-        playerWins.setBounds(60, 250, 200, 100);
+        playerWins.setBounds(90, 250, 200, 100);
         this.add(playerWins);
 
         computerWins.setText("Wins: ");
         computerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
         computerWins.setForeground(Color.white);
-        computerWins.setBounds(985, 250, 200, 100);
+        computerWins.setBounds(1015, 250, 200, 100);
         this.add(computerWins);
 
         playerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 60));
@@ -108,6 +108,7 @@ public abstract class PlayLabel extends JLabel  {
 
                 //JOptionPane(Object message, int messageType, int optionType, Icon icon, Object[] options, Object initialValue)
                 JLabel text = new JLabel(howToPlay);
+                text.setFont(new Font("Orbitron", Font.PLAIN, 22));
                 JOptionPane optionPane = new JOptionPane(text, JOptionPane.PLAIN_MESSAGE)
                 {
                     @Override

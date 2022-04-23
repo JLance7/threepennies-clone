@@ -86,14 +86,14 @@ public  class GameFrame extends JFrame implements ActionListener
         this.add(aboutUsLabel);
 
         String backgroundLocation = "images/PlayLabelImages/ManualLabelImages/manualv2.png";
-        String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
+        String howToString = "<html>Flip your own coin in real life and then choose the side you flipped. Be honest :)<br/>" +
+        "The first person to get a complete sequence of 3 that matches their own <br/>sequence wins that round. First to 6 wins takes the game!</html>";
         manualPlayLabel = new ManualPlayLabel(backgroundLocation, howToString);
         this.add(manualPlayLabel);
 
         backgroundLocation = "images/PlayLabelImages/StandardLabelImages/Standardv2.png";
-        howToString = "Flip the coin for to get a random flip of heads or tails" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
+        howToString = "<html>Flip the coin to get a random flip of heads or tails.<br/>" +
+        "The first person to get a complete sequence of 3 that matches<br/> their own sequence wins that round. First to 6 wins takes the game!</html>";
         standardPlayLabel = new StandardPlayLabel(backgroundLocation, howToString);
         this.add(standardPlayLabel);
 
