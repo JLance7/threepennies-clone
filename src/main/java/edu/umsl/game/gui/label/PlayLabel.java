@@ -107,14 +107,16 @@ public abstract class PlayLabel extends JLabel  {
                 placeholder.setVisible(false);
 
                 //JOptionPane(Object message, int messageType, int optionType, Icon icon, Object[] options, Object initialValue)
-                JOptionPane pane = new JOptionPane(howToPlay, JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE)
+                JLabel text = new JLabel(howToPlay);
+                JOptionPane optionPane = new JOptionPane(text, JOptionPane.PLAIN_MESSAGE)
                 {
                     @Override
-                    public void selectInitialValue() {
-                        placeholder.requestFocusInWindow();
+                    public void selectInitialValue()
+                    {
+                        text.requestFocus();
                     }
                 };
-                pane.createDialog(null, "How to Play").setVisible(true);
+                optionPane.createDialog(null, "How to Play").setVisible(true);
             }
         });
         this.add(explanation);
