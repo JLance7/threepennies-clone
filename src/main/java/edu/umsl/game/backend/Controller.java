@@ -62,8 +62,9 @@ public class Controller {
         }
 
         boolean playerWin = checkWin("player", coin);
+        System.out.println("EPIC --- playerIndex: " + lastPlayerIndex);
         boolean computerWin = checkWin("computer", coin);
-
+        System.out.println("EPIC --- playerIndex: " + lastPlayerIndex);
         if (playerWin){
             playerIndex = 0;
             computerIndex = 0;
@@ -87,81 +88,108 @@ public class Controller {
     //else reset player/computer index back to 0
     public boolean checkWin(String player, String coin){
         if (player == "player"){
-            //if less than or equal to 3 characters
-            if (ribbonText.length() <= 3){
-                if (coin.charAt(0) == userSequence.charAt(playerIndex)){
-                    playerIndex++;
-                    lastPlayerIndex = playerIndex;
-                    if (playerIndex == 3){
-                        return true;
-                    }
-                } else{
-                    playerIndex = 0;
-                    lastPlayerIndex = playerIndex;
-                    if (ribbonText.charAt(playerIndex) == userSequence.charAt(playerIndex)){
+            //checks for win
+            playerIndex = 0;
+            for (int i=0; i<ribbonText.length() - 2; i++){
+                for (int j = i; j< i + 3; j++){
+                    if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)){
                         playerIndex++;
                         lastPlayerIndex = playerIndex;
+                        if (playerIndex == 3){
+                            return true;
+                        }
+                    } else{
+                        playerIndex = 0;
+                        lastPlayerIndex = playerIndex;
+                        break;
                     }
                 }
-            } else{
                 playerIndex = 0;
-                for (int i=0; i<ribbonText.length() - 2; i++){
-                    for (int j = i; j< i + 3; j++){
-                        if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)){
+            }
+            //if not win check for progress
+            playerIndex = 0;
+            if (ribbonText.length() == 1) {
+                if (ribbonText.charAt(0) == userSequence.charAt(0)) {
+                    playerIndex++;
+                    lastPlayerIndex = playerIndex;
+                }
+            }
+            else {
+                System.out.println("-------------------");
+                if (ribbonText.charAt(ribbonText.length()-2) == userSequence.charAt(0)){
+                    playerIndex++;
+                    lastPlayerIndex = playerIndex;
+                    System.out.println("1 ribbon char: " + ribbonText.charAt((ribbonText.length()-2)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
+                    if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(1)){
+                        playerIndex++;
+                        lastPlayerIndex = playerIndex;
+                        System.out.println("2 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(1) + " playerIndex: " + playerIndex);
+                    }
+                    else {
+                        playerIndex = 0;
+                        lastPlayerIndex = playerIndex;
+                        if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(0)){
                             playerIndex++;
                             lastPlayerIndex = playerIndex;
-                            if (playerIndex == 3){
-                                return true;
-                            }
-                        } else{
-                            playerIndex = 0;
-                            lastPlayerIndex = playerIndex;
-                            if (ribbonText.charAt(j) == userSequence.charAt(playerIndex)){
-                                playerIndex++;
-                                lastPlayerIndex = playerIndex;
-                            }
+                            System.out.println("3 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
                         }
                     }
-                    playerIndex = 0;
+                } else {
+                    if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(0)){
+                        playerIndex++;
+                        lastPlayerIndex = playerIndex;
+                        System.out.println("4 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
+                    }
                 }
             }
         } else if (player == "computer") {
-            if (ribbonText.length() <= 3){
-                if (coin.charAt(0) == computerSequence.charAt(computerIndex)){
+            //checks for win
+            computerIndex = 0;
+            for (int i=0; i<ribbonText.length() - 2; i++){
+                for (int j = i; j< i + 3; j++){
+                    if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
+                        computerIndex++;
+                        lastComputerIndex = computerIndex;
+                        if (computerIndex == 3){
+                            return true;
+                        }
+                    } else{
+                        computerIndex = 0;
+                        lastComputerIndex = computerIndex;
+                        break;
+                    }
+                }
+                computerIndex = 0;
+            }
+            //if not win check for progress
+            computerIndex = 0;
+            if (ribbonText.length() == 1) {
+                if (ribbonText.charAt(0) == computerSequence.charAt(0)) {
                     computerIndex++;
                     lastComputerIndex = computerIndex;
-                    if (computerIndex == 3){
-                        return true;
-                    }
-                } else{
-                    computerIndex = 0;
+                }
+            }
+            else {
+                if (ribbonText.charAt(ribbonText.length()-2) == computerSequence.charAt(0)){
+                    computerIndex++;
                     lastComputerIndex = computerIndex;
-                    if (ribbonText.charAt(computerIndex) == computerSequence.charAt(computerIndex)){
+                    if (ribbonText.charAt(ribbonText.length()-1) == computerSequence.charAt(1)){
                         computerIndex++;
                         lastComputerIndex = computerIndex;
                     }
-                }
-            } else{
-                computerIndex = 0;
-                for (int i=0; i<ribbonText.length() - 2; i++){
-                    for (int j = i; j< i + 3; j++){
-                        if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
+                    else {
+                        computerIndex = 0;
+                        lastComputerIndex = computerIndex;
+                        if (ribbonText.charAt(ribbonText.length()-1) == computerSequence.charAt(0)){
                             computerIndex++;
                             lastComputerIndex = computerIndex;
-                            if (computerIndex == 3){
-                                return true;
-                            }
-                        } else{
-                            computerIndex = 0;
-                            lastComputerIndex = computerIndex;
-                            if (ribbonText.charAt(j) == computerSequence.charAt(computerIndex)){
-                                computerIndex++;
-                                lastComputerIndex = computerIndex;
-                            }
-
                         }
                     }
-                    computerIndex = 0;
+                } else {
+                    if (ribbonText.charAt(ribbonText.length()-1) == computerSequence.charAt(0)){
+                        computerIndex++;
+                        lastComputerIndex = computerIndex;
+                    }
                 }
             }
         }
@@ -180,6 +208,7 @@ public class Controller {
 
     //get how many checks should be shown for each player
     public int[] getPlayerAndComputerPosition(){
+        System.out.println("calling getCheckMarks");
         int[] indexes = {lastPlayerIndex, lastComputerIndex};
         return indexes;
     }

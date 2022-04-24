@@ -35,7 +35,7 @@ import javax.swing.*;
 public class Main
 {
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
-        //make JOptionpane look nicer
+        //makes JOptionpane look nicer
         UIManager.setLookAndFeel(
                 UIManager.getSystemLookAndFeelClassName());
         //create instance of GameFrame with default constructor

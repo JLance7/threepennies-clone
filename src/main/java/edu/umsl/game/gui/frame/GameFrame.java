@@ -519,6 +519,7 @@ public  class GameFrame extends JFrame implements ActionListener
 
         //System.out.println("\nplayerchecks: " + playerChecks);
         //System.out.println("computerchecks: " + computerChecks);
+        System.out.println("\nPlayerIndex: " + playerChecks);
 
         for (int i=0; i<playerChecks; i++){
             playerChecksString += "\u2713";
