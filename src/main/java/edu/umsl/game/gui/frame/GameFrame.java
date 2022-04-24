@@ -509,7 +509,7 @@ public  class GameFrame extends JFrame implements ActionListener
         standardPlayLabel.getFlipButton().addActionListener(this);
     }
 
-    //TODO this is not working correctly right now
+
     public void setCheckMarks(boolean manual){
         //set check marks
         int[] indexes = controller.getPlayerAndComputerPosition();
@@ -519,7 +519,7 @@ public  class GameFrame extends JFrame implements ActionListener
 
         //System.out.println("\nplayerchecks: " + playerChecks);
         //System.out.println("computerchecks: " + computerChecks);
-        System.out.println("\nPlayerIndex: " + playerChecks);
+//        System.out.println("\nPlayerIndex: " + playerChecks);
 
         for (int i=0; i<playerChecks; i++){
             playerChecksString += "\u2713";

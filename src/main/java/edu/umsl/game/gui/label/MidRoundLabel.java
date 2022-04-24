@@ -33,8 +33,8 @@ public class MidRoundLabel extends JLabel {
         computerWinLabel.setForeground(Color.white);
         playerWinLabel.setFocusable(false);
         computerWinLabel.setFocusable(false);
-        playerWinLabel.setBounds(260, 380, 100, 100);
-        computerWinLabel.setBounds(915, 380, 100, 100);
+        playerWinLabel.setBounds(260, 370, 100, 100);
+        computerWinLabel.setBounds(915, 370, 100, 100);
         playerWinLabel.setHorizontalAlignment(JLabel.CENTER);
         computerWinLabel.setHorizontalAlignment(JLabel.CENTER);
 

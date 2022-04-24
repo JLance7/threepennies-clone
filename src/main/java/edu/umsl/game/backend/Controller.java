@@ -62,9 +62,8 @@ public class Controller {
         }
 
         boolean playerWin = checkWin("player", coin);
-        System.out.println("EPIC --- playerIndex: " + lastPlayerIndex);
         boolean computerWin = checkWin("computer", coin);
-        System.out.println("EPIC --- playerIndex: " + lastPlayerIndex);
+
         if (playerWin){
             playerIndex = 0;
             computerIndex = 0;
@@ -115,15 +114,15 @@ public class Controller {
                 }
             }
             else {
-                System.out.println("-------------------");
+//                System.out.println("-------------------");
                 if (ribbonText.charAt(ribbonText.length()-2) == userSequence.charAt(0)){
                     playerIndex++;
                     lastPlayerIndex = playerIndex;
-                    System.out.println("1 ribbon char: " + ribbonText.charAt((ribbonText.length()-2)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
+//                    System.out.println("1 ribbon char: " + ribbonText.charAt((ribbonText.length()-2)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
                     if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(1)){
                         playerIndex++;
                         lastPlayerIndex = playerIndex;
-                        System.out.println("2 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(1) + " playerIndex: " + playerIndex);
+//                        System.out.println("2 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(1) + " playerIndex: " + playerIndex);
                     }
                     else {
                         playerIndex = 0;
@@ -131,14 +130,14 @@ public class Controller {
                         if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(0)){
                             playerIndex++;
                             lastPlayerIndex = playerIndex;
-                            System.out.println("3 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
+//                            System.out.println("3 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
                         }
                     }
                 } else {
                     if (ribbonText.charAt(ribbonText.length()-1) == userSequence.charAt(0)){
                         playerIndex++;
                         lastPlayerIndex = playerIndex;
-                        System.out.println("4 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
+//                        System.out.println("4 ribbon char: " + ribbonText.charAt((ribbonText.length()-1)) + " userChar: " + userSequence.charAt(0) + " playerIndex: " + playerIndex);
                     }
                 }
             }
@@ -208,7 +207,7 @@ public class Controller {
 
     //get how many checks should be shown for each player
     public int[] getPlayerAndComputerPosition(){
-        System.out.println("calling getCheckMarks");
+//        System.out.println("calling getCheckMarks");
         int[] indexes = {lastPlayerIndex, lastComputerIndex};
         return indexes;
     }
