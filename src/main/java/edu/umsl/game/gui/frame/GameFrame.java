@@ -222,13 +222,15 @@ public  class GameFrame extends JFrame implements ActionListener
             standardPlayLabel.getComputerChecks().setText("");
             standardPlayLabel.getPlayerChecks().setText("");
         }
-        if (start == manualMidRoundLabel ){
-            //add action listener back after winning a round
-            manualPlayLabel.getHeadButton().addActionListener(this);
-            manualPlayLabel.getTailsBtn().addActionListener(this);
+        if (end == victoryLabel){
+            String sound = "sounds/nice.wav";
+            music = new MusicPlayer();
+            music.playMusic(sound, false);
         }
-        if (start == standardMidRoundLabel){
-            standardPlayLabel.getFlipButton().addActionListener(this);
+        if (end == defeatLabel){
+            String sound = "sounds/bruh.wav";
+            music = new MusicPlayer();
+            music.playMusic(sound, false);
         }
     }
 
@@ -321,8 +323,10 @@ public  class GameFrame extends JFrame implements ActionListener
                     else
                         manualMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
 
-                    manualMidRoundLabel.setVisible(true);
+
                     manualPlayLabel.setVisible(false);
+                    manualMidRoundLabel.setVisible(true);
+                    addManualListeners();
                 }
             });
             timer.setRepeats(false);
@@ -332,10 +336,31 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(manualPlayLabel, victoryLabel);
+            //pause screen before victory page
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(manualMidRoundLabel, victoryLabel);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         } else if (totalWins == "computer"){
-            changeLabel(manualPlayLabel, defeatLabel);
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(manualMidRoundLabel, defeatLabel);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         }
+
+    }
+
+    public void addManualListeners(){
+        manualPlayLabel.getHeadButton().addActionListener(this);
+        manualPlayLabel.getTailsBtn().addActionListener(this);
     }
 
     public void handleStandardLogic() throws InterruptedException {
@@ -456,13 +481,32 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(standardPlayLabel, victoryLabel);
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(standardMidRoundLabel, victoryLabel);
+                    addStandardActionListener();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         } else if (totalWins == "computer"){
-            changeLabel(standardPlayLabel, defeatLabel);
-        }
-
-        if (win == "")
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(standardMidRoundLabel, defeatLabel);
+                    addStandardActionListener();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+        } else {
             standardPlayLabel.getFlipButton().addActionListener(this);
+        }
+    }
+
+    public void addStandardActionListener(){
+        standardPlayLabel.getFlipButton().addActionListener(this);
     }
 
     //TODO this is not working correctly right now
