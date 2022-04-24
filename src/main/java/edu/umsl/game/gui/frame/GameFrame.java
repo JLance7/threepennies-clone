@@ -86,14 +86,14 @@ public  class GameFrame extends JFrame implements ActionListener
         this.add(aboutUsLabel);
 
         String backgroundLocation = "images/PlayLabelImages/ManualLabelImages/manualv2.png";
-        String howToString = "Flip your own coin in real life and then choose the side you flipped. Be honest :)" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
+        String howToString = "<html>Flip your own coin in real life and then choose the side you flipped. Be honest :)<br/>" +
+        "The first person to get a complete sequence of 3 that matches their own <br/>sequence wins that round. First to 6 wins takes the game!</html>";
         manualPlayLabel = new ManualPlayLabel(backgroundLocation, howToString);
         this.add(manualPlayLabel);
 
         backgroundLocation = "images/PlayLabelImages/StandardLabelImages/Standardv2.png";
-        howToString = "Flip the coin for to get a random flip of heads or tails" +
-        "\nThe first person to get a complete sequence of 3 that matches their own sequence \nwins that round. First to 10 wins the game!";
+        howToString = "<html>Flip the coin to get a random flip of heads or tails.<br/>" +
+        "The first person to get a complete sequence of 3 that matches<br/> their own sequence wins that round. First to 6 wins takes the game!</html>";
         standardPlayLabel = new StandardPlayLabel(backgroundLocation, howToString);
         this.add(standardPlayLabel);
 
@@ -222,13 +222,15 @@ public  class GameFrame extends JFrame implements ActionListener
             standardPlayLabel.getComputerChecks().setText("");
             standardPlayLabel.getPlayerChecks().setText("");
         }
-        if (start == manualMidRoundLabel ){
-            //add action listener back after winning a round
-            manualPlayLabel.getHeadButton().addActionListener(this);
-            manualPlayLabel.getTailsBtn().addActionListener(this);
+        if (end == victoryLabel){
+            String sound = "sounds/nice.wav";
+            music = new MusicPlayer();
+            music.playMusic(sound, false);
         }
-        if (start == standardMidRoundLabel){
-            standardPlayLabel.getFlipButton().addActionListener(this);
+        if (end == defeatLabel){
+            String sound = "sounds/bruh.wav";
+            music = new MusicPlayer();
+            music.playMusic(sound, false);
         }
     }
 
@@ -321,8 +323,10 @@ public  class GameFrame extends JFrame implements ActionListener
                     else
                         manualMidRoundLabel.getComputerWinLabel().setText(String.valueOf(controller.getComputerWins()));
 
-                    manualMidRoundLabel.setVisible(true);
+
                     manualPlayLabel.setVisible(false);
+                    manualMidRoundLabel.setVisible(true);
+                    addManualListeners();
                 }
             });
             timer.setRepeats(false);
@@ -332,10 +336,31 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(manualPlayLabel, victoryLabel);
+            //pause screen before victory page
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(manualMidRoundLabel, victoryLabel);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         } else if (totalWins == "computer"){
-            changeLabel(manualPlayLabel, defeatLabel);
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(manualMidRoundLabel, defeatLabel);
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         }
+
+    }
+
+    public void addManualListeners(){
+        manualPlayLabel.getHeadButton().addActionListener(this);
+        manualPlayLabel.getTailsBtn().addActionListener(this);
     }
 
     public void handleStandardLogic() throws InterruptedException {
@@ -456,16 +481,35 @@ public  class GameFrame extends JFrame implements ActionListener
         //if 10 wins are won go to win or lose screen
         String totalWins = controller.checkTotalWins();
         if (totalWins == "player"){
-            changeLabel(standardPlayLabel, victoryLabel);
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(standardMidRoundLabel, victoryLabel);
+                    addStandardActionListener();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
         } else if (totalWins == "computer"){
-            changeLabel(standardPlayLabel, defeatLabel);
-        }
-
-        if (win == "")
+            timer = new Timer(1000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    changeLabel(standardMidRoundLabel, defeatLabel);
+                    addStandardActionListener();
+                }
+            });
+            timer.setRepeats(false);
+            timer.start();
+        } else {
             standardPlayLabel.getFlipButton().addActionListener(this);
+        }
     }
 
-    //TODO this is not working correctly right now
+    public void addStandardActionListener(){
+        standardPlayLabel.getFlipButton().addActionListener(this);
+    }
+
+
     public void setCheckMarks(boolean manual){
         //set check marks
         int[] indexes = controller.getPlayerAndComputerPosition();
@@ -475,6 +519,7 @@ public  class GameFrame extends JFrame implements ActionListener
 
         //System.out.println("\nplayerchecks: " + playerChecks);
         //System.out.println("computerchecks: " + computerChecks);
+//        System.out.println("\nPlayerIndex: " + playerChecks);
 
         for (int i=0; i<playerChecks; i++){
             playerChecksString += "\u2713";
