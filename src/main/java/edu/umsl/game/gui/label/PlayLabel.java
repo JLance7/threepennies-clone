@@ -46,17 +46,17 @@ public abstract class PlayLabel extends JLabel  {
         Font sequenceFont = new Font("Orbitron", Font.PLAIN, 65);
         playerSequenceLabel.setFont(sequenceFont);
         playerSequenceLabel.setForeground(Color.white);
-        playerSequenceLabel.setBounds(90, 84, 200, 200);
+        playerSequenceLabel.setBounds(90, 90, 200, 200);
         this.add(playerSequenceLabel);
 
         computerSequenceLabel.setFont(sequenceFont);
         computerSequenceLabel.setForeground(Color.white);
-        computerSequenceLabel.setBounds(1015, 84, 200, 200);
+        computerSequenceLabel.setBounds(1015, 90, 200, 200);
         this.add(computerSequenceLabel);
 
         roundsLabel.setFont(new Font("Orbitron", Font.PLAIN, 36));
         roundsLabel.setForeground(Color.white);
-        roundsLabel.setBounds(700, 115, 100, 100);
+        roundsLabel.setBounds(700, 123, 100, 100);
         this.add(roundsLabel);
 
         ribbonHistory.setFont(new Font("Orbitron", Font.PLAIN, 48));
@@ -68,13 +68,13 @@ public abstract class PlayLabel extends JLabel  {
         playerWins.setText("Wins: ");
         playerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
         playerWins.setForeground(Color.white);
-        playerWins.setBounds(90, 248, 200, 100);
+        playerWins.setBounds(60, 250, 200, 100);
         this.add(playerWins);
 
         computerWins.setText("Wins: ");
         computerWins.setFont(new Font("Orbitron", Font.PLAIN, 32));
         computerWins.setForeground(Color.white);
-        computerWins.setBounds(1015, 248, 200, 100);
+        computerWins.setBounds(985, 250, 200, 100);
         this.add(computerWins);
 
         playerChecks.setFont(new Font("Segoe UI Symbol", Font.PLAIN, 60));
