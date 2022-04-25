@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.umsl.game.backend.AssetTest
 -------------------------------------------------------------------------------
-Tests run: 43, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.574 sec
+Tests run: 43, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.529 sec

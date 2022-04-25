@@ -64,9 +64,9 @@ public class SequenceLabel extends JLabel
         lblSequence2.setText("H");
         lblSequence3.setText("H");
         //set font and size for button and label text
-        lblSequence1.setFont(new Font("Orbitron", Font.PLAIN, 150));
-        lblSequence2.setFont(new Font("Orbitron", Font.PLAIN, 150));
-        lblSequence3.setFont(new Font("Orbitron", Font.PLAIN, 150));
+        lblSequence1.setFont(new Font("", Font.PLAIN, 150));
+        lblSequence2.setFont(new Font("", Font.PLAIN, 150));
+        lblSequence3.setFont(new Font("", Font.PLAIN, 150));
         //set text color of buttons and labels
         lblSequence1.setForeground(Color.BLACK);
         lblSequence2.setForeground(Color.BLACK);
@@ -81,9 +81,9 @@ public class SequenceLabel extends JLabel
         btnFlip1.setBounds(645, 423, 90, 40);
         btnFlip2.setBounds(845, 423, 90, 40);
         btnFlip3.setBounds(1040, 423, 90, 40);
-        lblSequence1.setBounds(631, 245, 200, 120);
-        lblSequence2.setBounds(830, 245, 200, 120);
-        lblSequence3.setBounds(1025, 245, 200, 120);
+        lblSequence1.setBounds(636, 240, 200, 120);
+        lblSequence2.setBounds(835, 240, 200, 120);
+        lblSequence3.setBounds(1030, 240, 200, 120);
         //add buttons and labels to the example label
         this.add(btnSubmit);
         this.add(btnFlip1);

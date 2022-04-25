@@ -27,14 +27,14 @@ public class MidRoundLabel extends JLabel {
         //set attributes for player/computer win labels
         playerWinLabel.setText("0");
         computerWinLabel.setText("0");
-        playerWinLabel.setFont(new Font("Orbitron", Font.PLAIN, 80));
-        computerWinLabel.setFont(new Font("Orbitron", Font.PLAIN, 80));
+        playerWinLabel.setFont(new Font("", Font.PLAIN, 80));
+        computerWinLabel.setFont(new Font("", Font.PLAIN, 80));
         playerWinLabel.setForeground(Color.white);
         computerWinLabel.setForeground(Color.white);
         playerWinLabel.setFocusable(false);
         computerWinLabel.setFocusable(false);
-        playerWinLabel.setBounds(260, 380, 100, 100);
-        computerWinLabel.setBounds(915, 380, 100, 100);
+        playerWinLabel.setBounds(258, 369, 100, 100);
+        computerWinLabel.setBounds(913, 369, 100, 100);
         playerWinLabel.setHorizontalAlignment(JLabel.CENTER);
         computerWinLabel.setHorizontalAlignment(JLabel.CENTER);
 
