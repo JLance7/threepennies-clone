@@ -1,6 +1,8 @@
 package edu.umsl.game.gui.label;
 
 //import swing and awt wildcard for GUI development
+import edu.umsl.game.backend.MusicPlayer;
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -44,6 +46,12 @@ public class ExampleLabel extends JLabel
         String url = "https://youtu.be/Sa9jLWKrX0c";
         btnLearn.addActionListener(e -> {
             try {
+                //play button click music for learnmore
+                MusicPlayer music;
+                String fileName = "sounds/buttonClick.wav";
+                music = new MusicPlayer();
+                music.playMusic(fileName, false);
+                //pull up YT page
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
             } catch (IOException ex) {
                 ex.printStackTrace();
