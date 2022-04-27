@@ -28,6 +28,10 @@ the entirety of the front-end of this program.
 package edu.umsl.game;
 
 //import for access to GameFrame
+
+//bruh and nice sounds taken from youtube
+//buttonClick and coinFlip sounds taken from Freesound.org
+//Elevator by Kevin Macleod song used
 import edu.umsl.game.gui.frame.GameFrame;
 
 import javax.swing.*;
