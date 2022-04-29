@@ -1,9 +1,11 @@
-# Three Pennies Group Project
+# Three Pennies Group Project 
 
 ## A game about probability
 
-### Group Members:
+### Description:
+Group project for cs4500, a small game made in Java with Swing 
 
+### Group Members:
 
 * Avery Johnson
 * Divine Akinjiyan
